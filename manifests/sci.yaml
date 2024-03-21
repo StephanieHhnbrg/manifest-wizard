@@ -1,0 +1,39 @@
+name: manifest-wizard
+description:
+tags:
+initialize:
+  outputs: ['yaml']
+  plugins:
+    sci-m:
+      method: SciM
+      path: '@grnsft/if-plugins'
+    sci-e:
+      method: SciE
+      path: '@grnsft/if-plugins'
+    sci:
+      method: Sci
+      path: '@grnsft/if-plugins'
+      global-config:
+        functional-unit-time: 5 seconds
+tree:
+  children:
+    context-1:
+      pipeline:
+        - sci-m
+        - sci-e
+        - sci
+      config:
+        functional-unit: requests
+      defaults:
+        device/emissions-embodied: 798798
+        device/expected-lifespan: 78979
+        resources-reserved: 1
+        resources-total: 4
+      inputs:
+        - timestamp: 2024-03-26T00:00
+          duration: 2000
+          cpu/energy: 2
+          memory/energy: 2
+          network/energy: 8980
+          carbon-operational: 890890
+          requests: 89080

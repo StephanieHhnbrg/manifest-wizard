@@ -1,4 +1,4 @@
-# GSF CarbonHack 24
+# Manifest Wizard
 
 ### Steps
 - Install dependencies: `npm install`
