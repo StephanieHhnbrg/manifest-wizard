@@ -1,4 +1,7 @@
-# Manifest Wizard
+<h1>
+    <img style="width: 40px;" src=".github/images/favicon.ico">
+    Manifest Wizard
+</h1>
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?color=blue)](./LICENSE)
 
@@ -33,10 +36,12 @@ But in case you would like to run the project locally, follow these steps:
 ### Basic Tutorial
 
 1. Configure the pipeline \
-   ![Tutorial - Step1](.//.github/images/step1.png)
+   ![Tutorial - Step1](.//.github/images/step1.gif)
+
+
 
 2. Upload your observations \
-   ![Tutorial - Step2](.//.github/images/step2.png)
+   ![Tutorial - Step2](.//.github/images/step2.gif)
 
 3. Download the manifest file
 
@@ -48,5 +53,5 @@ But in case you would like to run the project locally, follow these steps:
 - `ie --manifest <path to your manifest file> --output <output-path>`
 
 5. Visualize the output data \
-   ![Tutorial - Step5](.//.github/images/step5.png)
+   ![Tutorial - Step5](.//.github/images/step5.gif)
 

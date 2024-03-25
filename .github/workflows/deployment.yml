@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     env:
-      CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts
+      CI_COMMIT_MESSAGE: updates CI/CD Build Artifacts
       CI_COMMIT_AUTHOR: Continuous Integration
     runs-on: ubuntu-latest
 
@@ -27,7 +27,9 @@ jobs:
       - name: 🚧 Build project for production
         run: |
           npm run build-prod
-          mv dist docs
+          cp -r dist/manifest-wizard docs
+          rm -r dist
+          cp "./docs/index.html" "./docs/404.html"
 
       - name: 🎉 Commit & Push
         run: |

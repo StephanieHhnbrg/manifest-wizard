@@ -1,11 +1,11 @@
 {
-  "name": "Manifest Wizard",
+  "name": "manifest-wizard",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-prod": "ng build --configuration production --base-href https://StephanieHhnbrg.github.io/manifest-wizard/",
+    "build-prod": "ng build --configuration production --base-href https://StephanieHhnbrg.github.io/manifest-wizard/ --deploy-url=https://StephanieHhnbrg.github.io/manifest-wizard/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -22,7 +22,6 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
-    "@fortawesome/fontawesome-free": "^6.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@swimlane/ngx-charts": "^20.5.0",

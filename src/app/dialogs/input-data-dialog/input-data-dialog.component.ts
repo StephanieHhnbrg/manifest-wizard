@@ -33,6 +33,9 @@ export class InputDataDialogComponent implements AfterViewInit {
         }
         this.allData = [...data.input]
         this.dataSource = new MatTableDataSource([...data.input]);
+        this.dataSource.sortingDataAccessor = (map, property) => {
+            return map.get(property)!;
+        };
         this.contexts = data.contexts;
     }
 
