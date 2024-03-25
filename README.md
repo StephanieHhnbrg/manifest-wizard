@@ -23,7 +23,7 @@ Manifest Wizard is a tool to support the generation of such a manifest file and 
 
 ### Installation
 
-The tool is deployed on <a href='https://xx' target='_blank'>Github Pages</a>.
+The tool is deployed as a <a href='https://stephaniehhnbrg.github.io/manifest-wizard/' target='_blank'>Github Page</a>.
 
 But in case you would like to run the project locally, follow these steps:
 

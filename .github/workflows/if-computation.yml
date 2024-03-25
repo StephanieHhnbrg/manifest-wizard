@@ -1,6 +1,7 @@
 name: IF manifest computation
 
 on:
+  workflow_dispatch:
   push:
 
 jobs:
@@ -8,41 +9,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - name: 🌿 Check out branch
+        uses: actions/checkout@v3
 
-    - uses: dorny/paths-filter@v3
-      id: changes
-      with:
-        filters: |
-          src:
-            - 'manifests/**'    
+      - name: 🧐 Check for manifest changes
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            src:
+              - 'manifests/**'    
 
-    - name: exit workflow if no manifest changes
-      if: steps.changes.outputs.src == 'false'
-      run: |
-        exit 0
+      - name: 👋 Exit if no manifest changes exist
+        if: steps.changes.outputs.src == 'false'
+        run: |
+          exit 0
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      - name: 🌱 Install Impact Framework
+        run: |
+          npm install -g @grnsft/if
+          npm install -g @grnsft/if-plugins
+          npm install -g @grnsft/if-unofficial-plugins
 
-    - name: Install Impact Framework
-      run: |
-        npm install -g @grnsft/if
-        npm install -g @grnsft/if-plugins
-        npm install -g @grnsft/if-unofficial-plugins
+      - name: 💫 Evaluate Manifests and apply IF
+        run: |
+          IFS="," read -a files <<< $(find ./manifests -name '*.yaml')
+          mkdir outputs
+          
+          for f in "${files[@]}"; do
+            echo "Applying Impact Framework on ${f}"
+            ie --manifest "${f}" --output "./outputs/${f%".yaml"}"
+          done
 
-    - name: Evaluate Manifests
-      run: |
-        IFS="," read -a files <<< $(find ./manifests -name '*.yaml')
-        mkdir outputs
-  
-        for f in "${files[@]}"; do
-          echo "Applying Impact Framework on ${f}"
-          ie --manifest "${f}" --output "./outputs/${f%".yaml"}"
-        done
-
-    - uses: actions/upload-artifact@v4
-      with:
-        name: results
-        path: ./outputs/manifests
+      - name: ⬆️ Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: ./outputs/manifests

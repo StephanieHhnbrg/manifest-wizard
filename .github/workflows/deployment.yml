@@ -1,11 +1,13 @@
-name: IF manifest computation
+name: deployment
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - gh-pages
     paths-ignore:
       - 'dist/**'
+      - 'docs/**'
 
 jobs:
   build:
@@ -15,16 +17,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: 🌿 Check out branch
+        uses: actions/checkout@v3
 
-      - name: Build project for production
+      - name: 💽 Install dependencies
         run: |
-          npm ci
+          npm ci    
+
+      - name: 🚧 Build project for production
+        run: |
           npm run build-prod
+          mv dist docs
 
-      - name: commit & push
-
+      - name: 🎉 Commit & Push
         run: |
+          git add .
           git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
           git config --global user.email "username@users.noreply.github.com"
           git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
