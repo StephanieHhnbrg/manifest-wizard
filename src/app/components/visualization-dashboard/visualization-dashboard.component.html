@@ -1,0 +1,53 @@
+<div class="dashboard">
+    <div [ngClass]="{'centralized-div': !filename}">
+        <input type="file" class="file-input"
+               (change)="onFileSelected($event)" #fileUpload>
+
+        <button *ngIf="!filename" mat-raised-button color="primary" (click)="fileUpload.click()">
+            <mat-icon aria-hidden="false" fontIcon="upload_file"></mat-icon>
+            {{"BUTTON.UPLOAD_FILE" | translate}}
+        </button>
+
+        <button *ngIf="filename" mat-raised-button (click)="fileUpload.click()">
+            <mat-icon aria-hidden="false" fontIcon="upload_file"></mat-icon>
+            {{"BUTTON.UPLOAD_FILE" | translate}}
+        </button>
+
+        <button *ngIf="projectName" (click)="showInputData()"
+                mat-raised-button>
+            {{"BUTTON.SHOW_DATA" | translate}}
+        </button>
+
+        <button *ngIf="projectName" (click)="openChartConfiguration()"
+                mat-raised-button>
+            {{"BUTTON.CONFIGURE_CHARTS" | translate}}
+        </button>
+    </div>
+
+    <p *ngIf="projectName">{{"PROJECT.NAME" | translate}}: {{projectName}}   <small>({{filename}})</small></p>
+    <div class="plugin-row" *ngIf="usedPlugins.length > 0">
+        <span>{{"VISUALIZATION.PLUGINS" | translate}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <mat-chip-set aria-label="Used Plugins">
+            <div *ngFor="let p of usedPlugins">
+                <mat-chip>{{p.name}}</mat-chip>
+            </div>
+        </mat-chip-set>
+    </div>
+
+    <div class="charts" *ngIf="charts.length > 0">
+        <ng-container *ngFor="let chart of charts">
+            <ngx-charts-line-chart *ngIf="!chart.hidden && chart.type == 'CHARTS.LINE_CHART'"
+                                   [view]="view" [scheme]="colorScheme" [results]="chart.data"
+                                   [legend]=true [showXAxisLabel]=true [showYAxisLabel]=true [xAxis]=true [yAxis]=true
+                                   [xAxisLabel]="'Time'" [yAxisLabel]="chart.label" [timeline]=true>
+            </ngx-charts-line-chart>
+
+            <ngx-charts-advanced-pie-chart *ngIf="!chart.hidden && chart.type == 'CHARTS.PIE_CHART'"
+                                           [view]="[view[0]/2, view[1]]" [scheme]="colorScheme" [results]="chart.data"
+                                           [label]="chart.label">
+            </ngx-charts-advanced-pie-chart>
+        </ng-container>
+    </div>
+
+    <img *ngIf="!filename" src="./../../../assets/images/visualization-dashboard.png">
+</div>

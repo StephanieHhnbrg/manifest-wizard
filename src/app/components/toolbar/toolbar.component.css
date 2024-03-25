@@ -1,0 +1,16 @@
+mat-toolbar {
+    justify-content: space-between;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+img {
+    top: 5px;
+    max-height: 25px;
+}
+
+.title-link:hover {
+    cursor: pointer
+}

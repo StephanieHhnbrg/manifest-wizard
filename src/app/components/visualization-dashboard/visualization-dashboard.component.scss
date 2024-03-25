@@ -1,0 +1,57 @@
+.dashboard {
+  width: 100%;
+  height: calc(100vh - 56px);
+  padding: 10px;
+}
+
+.charts {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+button {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.file-input {
+  display: none;
+}
+
+.centralized-div {
+  width: 100%;
+  padding-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.plugin-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.plugin-row span {
+  padding-top: 7.5px;
+}
+
+mat-chip {
+  background-color: var(--app-accent-default) !important;
+  color: white !important;
+}
+
+::ng-deep .mdc-evolution-chip__text-label {
+  color: white !important;
+}
+
+img {
+  max-width: 645px;
+  max-height: 502px;
+}
+
+@media only screen and (max-width: 360px) {
+  img {
+    visibility: hidden;
+  }
+}

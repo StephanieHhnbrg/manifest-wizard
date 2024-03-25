@@ -1,0 +1,84 @@
+<div class="dialog">
+    <h2 mat-dialog-title>{{"CHART_CONFIGURATION.TITLE" | translate}}</h2>
+    <mat-dialog-content>
+
+        <mat-tab-group>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon>visibility</mat-icon>&nbsp;
+                    {{'CHART_CONFIGURATION.VISIBILITY' | translate}}
+                </ng-template>
+                <ng-container *ngFor="let c of charts">
+                    <mat-checkbox [(ngModel)]="!c.hidden" (change)="editVisibility(c)"
+                                  color="primary">
+                        {{c.type | translate}} - {{c.label}}
+                    </mat-checkbox>
+                    <br/>
+                </ng-container>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <mat-icon>add</mat-icon>&nbsp;
+                    {{'CHART_CONFIGURATION.ADD_NEW' | translate}}
+                </ng-template>
+                <div class="new-chart">
+                    <mat-form-field>
+                        <mat-label>{{ "CHART_CONFIGURATION.CHART_TYPE" | translate }}</mat-label>
+                        <mat-select #typeSelect required>
+                            <mat-option *ngFor="let type of CHART_TYPES"
+                                        value="{{type}}">{{ type | translate }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <ng-container *ngIf="typeSelect.value=='CHARTS.LINE_CHART'">
+                        <mat-form-field>
+                            <mat-label>{{ "CHART_CONFIGURATION.FIELDS" | translate }}</mat-label>
+                            <mat-select multiple #line_chart_field required>
+                                <mat-option *ngFor="let field of fields"
+                                            value="{{field.name}}">{{field.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>{{ "CHART_CONFIGURATION.Y_AXIS" | translate }}</mat-label>
+                            <input matInput #y_axis required>
+                        </mat-form-field>
+
+                        <mat-checkbox
+                            #aggregation_by_sum>{{"CHART_CONFIGURATION.AGGREGATION_BY_SUM" | translate}}</mat-checkbox>
+
+                        <button mat-raised-button color="primary "
+                                [disabled]="!line_chart_field.value || !y_axis.value"
+                                (click)="createLineChart(line_chart_field.value, y_axis.value, aggregation_by_sum.checked)">
+                            {{"BUTTON.CREATE_CHART" | translate}}
+                        </button>
+                    </ng-container>
+
+                    <ng-container *ngIf="typeSelect.value=='CHARTS.PIE_CHART'">
+                        <mat-form-field>
+                            <mat-label>{{ "CHART_CONFIGURATION.FIELDS" | translate }}</mat-label>
+                            <mat-select required #pie_chart_field>
+                                <mat-option *ngFor="let field of fields"
+                                            value="{{field.name}}">{{field.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>{{ "CHART_CONFIGURATION.AGGREGATION" | translate }}</mat-label>
+                            <mat-select required #aggregation>
+                                <mat-option *ngFor="let aggr of CHART_AGGREGATIONS"
+                                            value="{{aggr}}">{{ aggr | translate }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <button mat-raised-button color="primary"
+                                [disabled]="!pie_chart_field.value || !aggregation.value"
+                                (click)="createPieChart(pie_chart_field.value, aggregation.value)">
+                            {{"BUTTON.CREATE_CHART" | translate}}
+                        </button>
+                    </ng-container>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-dialog-content>
+</div>

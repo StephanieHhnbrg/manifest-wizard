@@ -1,0 +1,48 @@
+.input-output {
+  display: flex;
+  flex-direction: row;
+}
+
+.input-output > div {
+  width: 50%;
+  padding: 10px;
+}
+
+.badge {
+  background-color: var(--app-accent-default) !important;
+  color: white;
+  border-radius: 10px;
+}
+
+.manifest-output {
+  width: 100%;
+  max-height: 405px;
+}
+
+.manifest-output textarea {
+  max-height: 400px;
+}
+
+.project-data mat-form-field {
+  padding-right: 10px;
+}
+
+.right-floating {
+  float: right;
+}
+
+.input-block .button-row {
+  padding-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .input-output {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .input-output > div {
+    width: 100%;
+  }
+}

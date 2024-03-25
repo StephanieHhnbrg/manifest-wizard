@@ -1,0 +1,59 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-palette: mat.$teal-palette;
+$my-primary: mat.define-palette(mat.$teal-palette, 900);
+$my-accent: mat.define-palette(mat.$deep-purple-palette, 800, 900);
+$my-warn: mat.define-palette(mat.$pink-palette, 900);
+
+$my-theme: mat.define-light-theme((
+        color: (
+                primary: $my-primary,
+                accent: $my-accent,
+                warn: $my-warn,
+        ),
+        typography: mat.define-typography-config(),
+        density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
+
+@mixin generateColors($prefix, $palette) {
+  $colors-map: ();
+
+  @each $key, $value in $palette {
+    @if $key !=contrast {
+      .app-#{$prefix}-#{$key} {
+        color: map-get($palette, $key);
+      }
+
+      $map: ();
+      $map: map-merge($map, ($key: $value));
+      $colors-map: map-merge($colors-map, $map);
+    }
+  }
+
+  :root {
+    @each $key, $value in $colors-map {
+      --app-#{$prefix}-#{$key}: #{$value};
+    }
+  }
+}
+
+
+@include generateColors(primary, $my-primary);
+@include generateColors(accent, $my-accent);
+@include generateColors(warning, $my-warn);
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import 'mdb-angular-ui-kit/assets/scss/mdb.scss';

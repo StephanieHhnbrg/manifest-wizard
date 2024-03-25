@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+    <div class="title-link" routerLink="/">
+        <img src="./../../../favicon.ico">
+        &nbsp;
+        <span>{{"TOOLBAR.TITLE" | translate}}</span>
+    </div>
+
+    <div class="right">
+        <button mat-icon-button aria-label="About Page" (click)="openInfoDialog()">
+            <mat-icon aria-hidden="false" fontIcon="info"></mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Language Settings" [matMenuTriggerFor]="language_menu">
+            <mat-icon aria-hidden="false" fontIcon="language"></mat-icon>
+        </button>
+        <mat-menu #language_menu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="switchLanguage('en')">🇺🇸 {{"LANGUAGE.EN" | translate}}</button>
+            <button mat-menu-item (click)="switchLanguage('de')">🇩🇪 {{"LANGUAGE.DE" | translate}}</button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

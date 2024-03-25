@@ -1,0 +1,45 @@
+mat-chip-option {
+  cursor: pointer;
+}
+
+mat-expansion-panel {
+  width: 100%;
+}
+
+.input-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.input-block div {
+  padding-right: 10px;
+}
+
+mat-hint {
+  font-size: x-small;
+}
+
+.rotate-icon {
+  transform: rotate(180deg);
+}
+
+.smaller-button {
+  transform: scale(0.7);
+  transform: translateY(-10px);
+}
+
+mat-action-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.smaller {
+  font-size: smaller;
+}

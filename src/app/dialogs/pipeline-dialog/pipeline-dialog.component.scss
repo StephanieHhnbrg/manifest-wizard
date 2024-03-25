@@ -1,0 +1,59 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 375px;
+  max-width: 600px;
+  min-height: 375px;
+}
+
+.step {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.step mat-icon {
+  transform: translateY(5px);
+}
+
+.unit-span {
+  font-size: smaller;
+}
+
+.hidden {
+  color: white;
+}
+
+.input, .output {
+  width: 30%;
+}
+
+.italic {
+  font-style: italic;
+  font-size: smaller;
+}
+
+mat-chip {
+  background-color: var(--app-accent-default) !important;
+  color: white !important;
+}
+
+::ng-deep .mdc-evolution-chip__text-label {
+  color: white !important;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 5px;
+}
+
+.hints {
+  padding-top: 10px;
+  font-size: xx-small;
+  bottom: 0;
+  display: inline-block;
+  align-self: flex-end;
+}

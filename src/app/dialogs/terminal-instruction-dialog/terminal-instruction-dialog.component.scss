@@ -1,0 +1,12 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  width: 375px;
+}
+
+code {
+  background-color: #ECEFF1;
+  color: var(--app-warning-default) !important;
+}

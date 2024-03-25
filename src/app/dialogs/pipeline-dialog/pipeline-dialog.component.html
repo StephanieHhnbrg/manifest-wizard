@@ -1,0 +1,33 @@
+<div class="dialog">
+    <h2 mat-dialog-title>{{"PIPELINE_DIALOG.TITLE" | translate}}</h2>
+    <mat-dialog-content>
+        <ng-container *ngFor="let p of plugins; index as i">
+            <div class="step">
+                <div class="input">
+                    <span *ngFor="let input of p.manifestAttributes.input"
+                          [ngClass]="{'italic':isDefinedByPrevPluginOutput(input.name, i)}">
+                        <small>{{input.name}} <span class="unit-span" *ngIf="input.unit">({{input.unit}})</span></small><br/>
+                    </span>
+                </div>
+                <mat-icon [ngClass]="{'hidden':p.manifestAttributes.input.length==0}" aria-hidden="false"
+                          fontIcon="chevron_right"></mat-icon>
+                <mat-chip>{{p.name}}</mat-chip>
+                <mat-icon aria-hidden="false" fontIcon="chevron_right"></mat-icon>
+                <div class="output">
+                    <span *ngFor="let output of p.outputAttributes">
+                        <small>{{output.name}} <span class="unit-span" *ngIf="output.unit">({{output.unit}}
+                            )</span></small><br/>
+                    </span>
+                </div>
+            </div>
+            <div class="arrow" *ngIf="i < plugins.length-1">
+                <mat-icon aria-hidden="false" fontIcon="keyboard_double_arrow_down"></mat-icon>
+            </div>
+        </ng-container>
+    </mat-dialog-content>
+    <div class="hints">
+        {{"PIPELINE_DIALOG.HINT_1" | translate}}<br/>
+        {{"PIPELINE_DIALOG.HINT_2" | translate}}
+    </div>
+</div>
+

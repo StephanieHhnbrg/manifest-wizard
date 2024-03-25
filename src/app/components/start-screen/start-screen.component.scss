@@ -1,0 +1,50 @@
+.start-screen {
+  background-color: var(--app-primary-default) !important;
+  color: white;
+  height: calc(100vh - 64px);
+  width: 100vw;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.secondary-button {
+  margin-left: 20px !important;
+  color: white !important;
+}
+
+img {
+  max-width: 645px;
+  max-height: 502px;
+}
+
+@media only screen and (min-width: 600px) {
+  .start-screen {
+    padding-top: 100px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .start-screen div {
+    padding-top: 100px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .start-screen {
+    padding-top: 10%;
+  }
+
+  img {
+    padding-top: 50px;
+    float: right;
+    max-width: calc(100vw - 30px);
+  }
+}
+

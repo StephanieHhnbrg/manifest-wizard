@@ -1,0 +1,75 @@
+<div class="input-output">
+    <div class="input-block">
+        <mat-vertical-stepper #stepper>
+            <ng-template matStepperIcon="edit">
+                <mat-icon>done</mat-icon>
+            </ng-template>
+            <mat-step>
+                <ng-template matStepLabel>
+                    {{"INFO.CONFIGURE_PLUGINS" | translate}}&nbsp;&nbsp;
+                    <span class="badge" *ngIf="selectedPlugins.length>0">&nbsp;{{selectedPlugins.length}}&nbsp;</span>
+                </ng-template>
+                <app-plugin-configuration [isOpen]="stepper.selectedIndex==0"
+                                          (pluginConfigurationChanged)="updateManifest($event, observations)">
+                </app-plugin-configuration>
+            </mat-step>
+
+            <mat-step>
+                <ng-template matStepLabel>
+                    {{"INFO.ADD_OBSERVATIONS" | translate}}
+                </ng-template>
+                <app-observation-input #observation_input
+                                       [selectedPlugins]="selectedPlugins"
+                                       [isOpen]="stepper.selectedIndex==1"
+                                       (observationsEdited)="updateManifest(selectedPlugins, $event)">
+                </app-observation-input>
+            </mat-step>
+        </mat-vertical-stepper>
+        <div class="button-row">
+            <button *ngIf="selectedPlugins.length>0" (click)="showPipeline()"
+                    mat-raised-button>
+                {{"BUTTON.SHOW_PIPELINE" | translate}}
+            </button>&nbsp;
+            <button *ngIf="observations.size>0" (click)="showInputData()"
+                    mat-raised-button>
+                {{"BUTTON.SHOW_DATA" | translate}}
+            </button>
+        </div>
+    </div>
+    <div>
+        <div class="project-data">
+            <mat-form-field>
+                <mat-label>{{"PROJECT.NAME" | translate}}</mat-label>
+                <input matInput [(ngModel)]="project.name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{"PROJECT.DESC" | translate}}</mat-label>
+                <input matInput [(ngModel)]="project.description">
+            </mat-form-field>
+        </div>
+        <mat-form-field class="manifest-output">
+            <mat-label>manifest.yml</mat-label>
+            <textarea matInput [value]="manifest" rows="16"></textarea>
+        </mat-form-field>
+        <div class="button-row">
+            <button mat-icon-button aria-label="Copy Manifest to Clipboard" (click)="copyManifestToClipboard()">
+                <mat-icon aria-hidden="false" fontIcon="file_copy"></mat-icon>
+                <span #tooltip="matTooltip"
+                      matTooltipTouchGestures="off"
+                      [matTooltip]="getCopiedToClipboardTooltip()"
+                      matTooltipPosition="below"
+                ></span>
+            </button>
+            <button mat-icon-button aria-label="Download Manifest" (click)="downloadManifestAsYmlFile()">
+                <mat-icon aria-hidden="false" fontIcon="download"></mat-icon>
+            </button>
+            <button mat-icon-button aria-label="See Terminal Instructions" (click)="openTerminalInstructionDialog()">
+                <mat-icon aria-hidden="false" fontIcon="terminal"></mat-icon>
+            </button>
+            <button class="right-floating" mat-button color="primary" routerLink="/visualize">
+                <mat-icon aria-hidden="false" fontIcon="bubble_chart"></mat-icon>
+                {{"BUTTON.CREATE_VISUALIZATION" | translate}}
+            </button>
+        </div>
+    </div>
+</div>

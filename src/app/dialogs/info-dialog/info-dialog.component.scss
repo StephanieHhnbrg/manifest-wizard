@@ -1,0 +1,11 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  width: 375px;
+}
+
+a {
+  color: var(--app-primary-default) !important;
+}

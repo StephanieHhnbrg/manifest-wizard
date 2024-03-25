@@ -1,0 +1,34 @@
+.input-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.input-block div {
+    padding-right: 10px;
+}
+
+mat-hint {
+    font-size: x-small;
+}
+
+.button-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.file-input {
+    display: none;
+}
+
+.cancel-icon {
+    padding-top: 7.5px;
+    padding-right: 15px;
+    cursor: pointer;
+}
+
+.smaller {
+    font-size: smaller;
+}
