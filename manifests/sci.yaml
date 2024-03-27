@@ -4,36 +4,418 @@ tags:
 initialize:
   outputs: ['yaml']
   plugins:
+    sci-o:
+      method: SciO
+      path: '@grnsft/if-plugins'
     sci-m:
       method: SciM
-      path: '@grnsft/if-plugins'
-    sci-e:
-      method: SciE
       path: '@grnsft/if-plugins'
     sci:
       method: Sci
       path: '@grnsft/if-plugins'
       global-config:
-        functional-unit-time: 5 seconds
+        functional-unit-time: 1 hour
 tree:
   children:
-    context-1:
+    server-1:
       pipeline:
+        - sci-o
         - sci-m
-        - sci-e
         - sci
       config:
-        functional-unit: requests
+        sci:
+          functional-unit: requests
       defaults:
-        device/emissions-embodied: 798798
-        device/expected-lifespan: 78979
+        device/emissions-embodied: 1533
+        device/expected-lifespan: 1231200
         resources-reserved: 1
-        resources-total: 4
+        resources-total: 8
       inputs:
-        - timestamp: 2024-03-26T00:00
-          duration: 2000
-          cpu/energy: 2
-          memory/energy: 2
-          network/energy: 8980
-          carbon-operational: 890890
-          requests: 89080
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 20
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 18
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 5
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 4
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 2
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 30
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 800
+          requests: 40
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 50
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 90
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 4
+          grid/carbon-intensity: 1000
+          requests: 150
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 267
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1000
+          requests: 678
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 40
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1000
+          requests: 789
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 342
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1200
+          requests: 543
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 120
+          grid/carbon-intensity: 1200
+          requests: 675
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 40
+          grid/carbon-intensity: 1200
+          requests: 123
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 345
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 3
+          grid/carbon-intensity: 1200
+          requests: 79
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 49
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 1000
+          requests: 23
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 800
+          requests: 43
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 10
+    server-2:
+      pipeline:
+        - sci-o
+        - sci-m
+        - sci
+      config:
+        sci:
+          functional-unit: requests
+      defaults:
+        device/emissions-embodied: 1533
+        device/expected-lifespan: 1231200
+        resources-reserved: 1
+        resources-total: 8
+      inputs:
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 100
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 40
+          grid/carbon-intensity: 800
+          requests: 230
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 800
+          requests: 340
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 800
+          requests: 321
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 123
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 800
+          requests: 153
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 99
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 10
+          grid/carbon-intensity: 1000
+          requests: 55
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 15
+          grid/carbon-intensity: 1000
+          requests: 60
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 99
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 134
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 1000
+          requests: 154
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 325
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1000
+          requests: 456
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1200
+          requests: 435
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1200
+          requests: 478
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 312
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 354
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 90
+          grid/carbon-intensity: 1200
+          requests: 466
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 309
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 299
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 267
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 30
+          grid/carbon-intensity: 800
+          requests: 189
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 123
+    server-3:
+      pipeline:
+        - sci-o
+        - sci-m
+        - sci
+      config:
+        sci:
+          functional-unit: requests
+      defaults:
+        device/emissions-embodied: 1533
+        device/expected-lifespan: 1231200
+        resources-reserved: 1
+        resources-total: 8
+      inputs:
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 200
+          requests: 25
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 20
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 3
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 2
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 1
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 55
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 43
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 49
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 88
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 166
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 500
+          requests: 289
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 70
+          grid/carbon-intensity: 500
+          requests: 789
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 70
+          grid/carbon-intensity: 600
+          requests: 823
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 600
+          requests: 650
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 600
+          requests: 322
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 600
+          requests: 432
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 600
+          requests: 623
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 600
+          requests: 100
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 600
+          requests: 333
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 600
+          requests: 60
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 32
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 20
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 400
+          requests: 33
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 200
+          requests: 2

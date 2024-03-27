@@ -33,7 +33,6 @@ export class PluginConfigurationComponent implements OnInit {
     }
 
     selectPlugin(opt: PluginOption) {
-        console.log("Select: " + opt.plugin.name);
         opt.isSelected = true;
         this.selectedPlugins.push(opt.plugin);
         this.pluginConfigurationChanged.emit(this.selectedPlugins);

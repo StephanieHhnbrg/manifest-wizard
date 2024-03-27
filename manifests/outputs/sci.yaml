@@ -1,0 +1,1362 @@
+name: manifest-wizard
+description: null
+tags: null
+initialize:
+  plugins:
+    sci-o:
+      path: '@grnsft/if-plugins'
+      method: SciO
+    sci-m:
+      path: '@grnsft/if-plugins'
+      method: SciM
+    sci:
+      path: '@grnsft/if-plugins'
+      method: Sci
+      global-config:
+        functional-unit-time: 1 hour
+  outputs:
+    - yaml
+if-version: v0.3.1
+tree:
+  children:
+    server-1:
+      pipeline:
+        - sci-o
+        - sci-m
+        - sci
+      config:
+        sci:
+          functional-unit: requests
+      defaults:
+        device/emissions-embodied: 1533
+        device/expected-lifespan: 1231200
+        resources-reserved: 1
+        resources-total: 8
+      inputs:
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 20
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 18
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 5
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 4
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 2
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 30
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 800
+          requests: 40
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 50
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 90
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 4
+          grid/carbon-intensity: 1000
+          requests: 150
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 267
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1000
+          requests: 678
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 40
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1000
+          requests: 789
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 342
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1200
+          requests: 543
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 120
+          grid/carbon-intensity: 1200
+          requests: 675
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 40
+          grid/carbon-intensity: 1200
+          requests: 123
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 345
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 3
+          grid/carbon-intensity: 1200
+          requests: 79
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 49
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 1000
+          requests: 23
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 800
+          requests: 43
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 10
+      outputs:
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 20
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 800
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.22237786306042887
+          sci: 40.0280153508772
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 18
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 800
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.22237786306042887
+          sci: 44.47557261208577
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 5
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 800
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.22237786306042887
+          sci: 160.1120614035088
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 4
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 800
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.22237786306042887
+          sci: 200.14007675438597
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 2
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 800
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.22237786306042887
+          sci: 400.28015350877195
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 30
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 800
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.22237786306042887
+          sci: 26.68534356725146
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 800
+          requests: 40
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 1600
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.4446000852826511
+          sci: 40.0140076754386
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 50
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 2000
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.5557111963937622
+          sci: 40.01120614035088
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 90
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 20000
+          carbon-embodied: 0.5603070175438596
+          carbon: 5.555711196393761
+          sci: 222.22844785575046
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 4
+          grid/carbon-intensity: 1000
+          requests: 150
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 4000
+          carbon-embodied: 0.5603070175438596
+          carbon: 1.1112667519493178
+          sci: 26.670402046783625
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 267
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 50000
+          carbon-embodied: 0.5603070175438596
+          carbon: 13.889044529727094
+          sci: 187.26801613115185
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1000
+          requests: 678
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 100000
+          carbon-embodied: 0.5603070175438596
+          carbon: 27.777933418615984
+          sci: 147.49345178026186
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 40
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 2000
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.5557111963937622
+          sci: 50.0140076754386
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1000
+          requests: 789
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 100000
+          carbon-embodied: 0.5603070175438596
+          carbon: 27.777933418615984
+          sci: 126.7434224423543
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 342
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 60000
+          carbon-embodied: 0.5603070175438596
+          carbon: 16.666822307504873
+          sci: 175.44023481584077
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 100
+          grid/carbon-intensity: 1200
+          requests: 543
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 120000
+          carbon-embodied: 0.5603070175438596
+          carbon: 33.33348897417154
+          sci: 220.995507011082
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 120
+          grid/carbon-intensity: 1200
+          requests: 675
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 144000
+          carbon-embodied: 0.5603070175438596
+          carbon: 40.00015564083821
+          sci: 213.33416341780378
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 40
+          grid/carbon-intensity: 1200
+          requests: 123
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 48000
+          carbon-embodied: 0.5603070175438596
+          carbon: 13.333488974171539
+          sci: 390.2484577806304
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 345
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 60000
+          carbon-embodied: 0.5603070175438596
+          carbon: 16.666822307504873
+          sci: 173.9146675565726
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 3
+          grid/carbon-intensity: 1200
+          requests: 79
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 3600
+          carbon-embodied: 0.5603070175438596
+          carbon: 1.0001556408382066
+          sci: 45.57671274705752
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 1000
+          requests: 49
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 2000
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.5557111963937622
+          sci: 40.82776136770498
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 1000
+          requests: 23
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 1000
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.2779334186159844
+          sci: 43.502622044241036
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 800
+          requests: 43
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 1600
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.4446000852826511
+          sci: 37.22233272133823
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 800
+          requests: 10
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 800
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.22237786306042887
+          sci: 80.0560307017544
+    server-2:
+      pipeline:
+        - sci-o
+        - sci-m
+        - sci
+      config:
+        sci:
+          functional-unit: requests
+      defaults:
+        device/emissions-embodied: 1533
+        device/expected-lifespan: 1231200
+        resources-reserved: 1
+        resources-total: 8
+      inputs:
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 100
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 40
+          grid/carbon-intensity: 800
+          requests: 230
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 800
+          requests: 340
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 800
+          requests: 321
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 123
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 800
+          requests: 153
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 99
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 10
+          grid/carbon-intensity: 1000
+          requests: 55
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 15
+          grid/carbon-intensity: 1000
+          requests: 60
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 99
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 134
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 1000
+          requests: 154
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 325
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1000
+          requests: 456
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1200
+          requests: 435
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1200
+          requests: 478
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 312
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 354
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 90
+          grid/carbon-intensity: 1200
+          requests: 466
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 309
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 299
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 267
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 30
+          grid/carbon-intensity: 800
+          requests: 189
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 123
+      outputs:
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 100
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 16000
+          carbon-embodied: 0.5603070175438596
+          carbon: 4.4446000852826515
+          sci: 160.00560307017545
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 40
+          grid/carbon-intensity: 800
+          requests: 230
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 32000
+          carbon-embodied: 0.5603070175438596
+          carbon: 8.889044529727094
+          sci: 139.13287090007626
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 800
+          requests: 340
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 40000
+          carbon-embodied: 0.5603070175438596
+          carbon: 11.111266751949318
+          sci: 117.64870678534571
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 800
+          requests: 321
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 40000
+          carbon-embodied: 0.5603070175438596
+          carbon: 11.111266751949318
+          sci: 124.61233740503907
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 123
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 16000
+          carbon-embodied: 0.5603070175438596
+          carbon: 4.4446000852826515
+          sci: 130.0858561546142
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 800
+          requests: 153
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 20000
+          carbon-embodied: 0.5603070175438596
+          carbon: 5.555711196393761
+          sci: 130.72261638573556
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 99
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 16000
+          carbon-embodied: 0.5603070175438596
+          carbon: 4.4446000852826515
+          sci: 161.62182128300552
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 10
+          grid/carbon-intensity: 1000
+          requests: 55
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 10000
+          carbon-embodied: 0.5603070175438596
+          carbon: 2.7779334186159845
+          sci: 181.8283692185008
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 15
+          grid/carbon-intensity: 1000
+          requests: 60
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 15000
+          carbon-embodied: 0.5603070175438596
+          carbon: 4.166822307504873
+          sci: 250.00933845029238
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 99
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 20000
+          carbon-embodied: 0.5603070175438596
+          carbon: 5.555711196393761
+          sci: 202.02586168704588
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 1000
+          requests: 134
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 20000
+          carbon-embodied: 0.5603070175438596
+          carbon: 5.555711196393761
+          sci: 149.25791273893688
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 1000
+          requests: 154
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 25000
+          carbon-embodied: 0.5603070175438596
+          carbon: 6.944600085282651
+          sci: 162.3413006949191
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 325
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 50000
+          carbon-embodied: 0.5603070175438596
+          carbon: 13.889044529727094
+          sci: 153.8478778677463
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1000
+          requests: 456
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 80000
+          carbon-embodied: 0.5603070175438596
+          carbon: 22.22237786306043
+          sci: 175.4398252346876
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1200
+          requests: 435
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 96000
+          carbon-embodied: 0.5603070175438596
+          carbon: 26.666822307504873
+          sci: 220.69094323452308
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 1200
+          requests: 478
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 96000
+          carbon-embodied: 0.5603070175438596
+          carbon: 26.666822307504873
+          sci: 200.83799227409528
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 312
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 60000
+          carbon-embodied: 0.5603070175438596
+          carbon: 16.666822307504873
+          sci: 192.30948816351776
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 354
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 60000
+          carbon-embodied: 0.5603070175438596
+          carbon: 16.666822307504873
+          sci: 169.49310821191395
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 90
+          grid/carbon-intensity: 1200
+          requests: 466
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 108000
+          carbon-embodied: 0.5603070175438596
+          carbon: 30.000155640838205
+          sci: 231.76085902793463
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1200
+          requests: 309
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 60000
+          carbon-embodied: 0.5603070175438596
+          carbon: 16.666822307504873
+          sci: 194.1765705728723
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 299
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 50000
+          carbon-embodied: 0.5603070175438596
+          carbon: 13.889044529727094
+          sci: 167.22595420407205
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 1000
+          requests: 267
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 50000
+          carbon-embodied: 0.5603070175438596
+          carbon: 13.889044529727094
+          sci: 187.26801613115185
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 30
+          grid/carbon-intensity: 800
+          requests: 189
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 24000
+          carbon-embodied: 0.5603070175438596
+          carbon: 6.666822307504873
+          sci: 126.98709157152139
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 800
+          requests: 123
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 16000
+          carbon-embodied: 0.5603070175438596
+          carbon: 4.4446000852826515
+          sci: 130.0858561546142
+    server-3:
+      pipeline:
+        - sci-o
+        - sci-m
+        - sci
+      config:
+        sci:
+          functional-unit: requests
+      defaults:
+        device/emissions-embodied: 1533
+        device/expected-lifespan: 1231200
+        resources-reserved: 1
+        resources-total: 8
+      inputs:
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 200
+          requests: 25
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 20
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 3
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 2
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 1
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 55
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 43
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 49
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 88
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 166
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 500
+          requests: 289
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 70
+          grid/carbon-intensity: 500
+          requests: 789
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 70
+          grid/carbon-intensity: 600
+          requests: 823
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 600
+          requests: 650
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 600
+          requests: 322
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 600
+          requests: 432
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 600
+          requests: 623
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 600
+          requests: 100
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 600
+          requests: 333
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 600
+          requests: 60
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 32
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 20
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 400
+          requests: 33
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 200
+          requests: 2
+      outputs:
+        - timestamp: 2024-03-26 00:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 200
+          requests: 25
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 200
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.05571119639376219
+          sci: 8.022412280701754
+        - timestamp: 2024-03-26 01:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 20
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 400
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.11126675194931773
+          sci: 20.02801535087719
+        - timestamp: 2024-03-26 02:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 3
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 400
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.11126675194931773
+          sci: 133.52010233918128
+        - timestamp: 2024-03-26 03:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 2
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 400
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.11126675194931773
+          sci: 200.28015350877192
+        - timestamp: 2024-03-26 04:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 400
+          requests: 1
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 400
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.11126675194931773
+          sci: 400.56030701754383
+        - timestamp: 2024-03-26 05:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 55
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 500
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.13904452972709552
+          sci: 9.101096491228072
+        - timestamp: 2024-03-26 06:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 43
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 1000
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.2779334186159844
+          sci: 23.268844349245207
+        - timestamp: 2024-03-26 07:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 49
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 1000
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.2779334186159844
+          sci: 20.419598102398854
+        - timestamp: 2024-03-26 08:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 88
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 500
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.13904452972709552
+          sci: 5.6881853070175445
+        - timestamp: 2024-03-26 09:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 500
+          requests: 166
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 1000
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.2779334186159844
+          sci: 6.027471729021348
+        - timestamp: 2024-03-26 10:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 500
+          requests: 289
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 12500
+          carbon-embodied: 0.5603070175438596
+          carbon: 3.4723778630604287
+          sci: 43.25453393431676
+        - timestamp: 2024-03-26 11:00
+          duration: 3600
+          energy: 70
+          grid/carbon-intensity: 500
+          requests: 789
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 35000
+          carbon-embodied: 0.5603070175438596
+          carbon: 9.722377863060428
+          sci: 44.36065945122629
+        - timestamp: 2024-03-26 12:00
+          duration: 3600
+          energy: 70
+          grid/carbon-intensity: 600
+          requests: 823
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 42000
+          carbon-embodied: 0.5603070175438596
+          carbon: 11.666822307504873
+          sci: 51.03348761484513
+        - timestamp: 2024-03-26 13:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 600
+          requests: 650
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 30000
+          carbon-embodied: 0.5603070175438596
+          carbon: 8.333488974171539
+          sci: 46.15470816464237
+        - timestamp: 2024-03-26 14:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 600
+          requests: 322
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 12000
+          carbon-embodied: 0.5603070175438596
+          carbon: 3.33348897417154
+          sci: 37.26882082924703
+        - timestamp: 2024-03-26 15:00
+          duration: 3600
+          energy: 50
+          grid/carbon-intensity: 600
+          requests: 432
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 30000
+          carbon-embodied: 0.5603070175438596
+          carbon: 8.333488974171539
+          sci: 69.4457414514295
+        - timestamp: 2024-03-26 16:00
+          duration: 3600
+          energy: 80
+          grid/carbon-intensity: 600
+          requests: 623
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 48000
+          carbon-embodied: 0.5603070175438596
+          carbon: 13.333488974171539
+          sci: 77.04744832587086
+        - timestamp: 2024-03-26 17:00
+          duration: 3600
+          energy: 20
+          grid/carbon-intensity: 600
+          requests: 100
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 12000
+          carbon-embodied: 0.5603070175438596
+          carbon: 3.33348897417154
+          sci: 120.00560307017544
+        - timestamp: 2024-03-26 18:00
+          duration: 3600
+          energy: 25
+          grid/carbon-intensity: 600
+          requests: 333
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 15000
+          carbon-embodied: 0.5603070175438596
+          carbon: 4.166822307504873
+          sci: 45.04672764870133
+        - timestamp: 2024-03-26 19:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 600
+          requests: 60
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 600
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.1668223075048733
+          sci: 10.009338450292399
+        - timestamp: 2024-03-26 20:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 32
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 500
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.13904452972709552
+          sci: 15.642509594298247
+        - timestamp: 2024-03-26 21:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 500
+          requests: 20
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 500
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.13904452972709552
+          sci: 25.028015350877194
+        - timestamp: 2024-03-26 22:00
+          duration: 3600
+          energy: 2
+          grid/carbon-intensity: 400
+          requests: 33
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 800
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.22237786306042887
+          sci: 24.259403242955877
+        - timestamp: 2024-03-26 23:00
+          duration: 3600
+          energy: 1
+          grid/carbon-intensity: 200
+          requests: 2
+          device/emissions-embodied: 1533
+          device/expected-lifespan: 1231200
+          resources-reserved: 1
+          resources-total: 8
+          carbon-operational: 200
+          carbon-embodied: 0.5603070175438596
+          carbon: 0.05571119639376219
+          sci: 100.28015350877193

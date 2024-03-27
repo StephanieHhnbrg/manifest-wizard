@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
@@ -10,7 +10,7 @@ import {Subject} from "rxjs";
     templateUrl: './input-data-dialog.component.html',
     styleUrl: './input-data-dialog.component.css'
 })
-export class InputDataDialogComponent implements AfterViewInit {
+export class InputDataDialogComponent implements OnInit, AfterViewInit {
     public headers: string[] = ["context"];
     public columns: string[] = [];
     public contexts: string[] = [];
@@ -21,22 +21,25 @@ export class InputDataDialogComponent implements AfterViewInit {
 
     constructor(public dialogRef: MatDialogRef<InputDataDialogComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: { contexts: string[], input: Map<string, string>[], removedObservation$: Subject<Map<string, string>> | undefined }) {
-        data.input.forEach(d => {
+    }
+
+    ngOnInit() {
+        this.data.input.forEach(d => {
             let keys: string[] = Array.from(d.keys());
             this.headers = this.headers.concat(keys);
         });
-        this.headers = this.headers.filter((value, index, self) => self.indexOf(value) === index);
-        if (data.removedObservation$) {
+        this.headers = this.headers.filter((value, index, self) => value && self.indexOf(value) === index);
+        if (this.data.removedObservation$) {
             this.columns = this.headers.concat("action");
         } else {
             this.columns = this.headers;
         }
-        this.allData = [...data.input]
-        this.dataSource = new MatTableDataSource([...data.input]);
+        this.allData = [...this.data.input]
+        this.dataSource = new MatTableDataSource([...this.data.input]);
         this.dataSource.sortingDataAccessor = (map, property) => {
             return map.get(property)!;
         };
-        this.contexts = data.contexts;
+        this.contexts = this.data.contexts;
     }
 
     ngAfterViewInit() {

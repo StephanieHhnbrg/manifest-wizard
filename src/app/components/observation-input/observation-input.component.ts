@@ -123,7 +123,6 @@ export class ObservationInputComponent {
         let observation = new Map<string, string>();
         observation.set("context", context)
         this.inputFields.forEach(input => {
-            console.log(input);
             observation.set(input.name, input.value || '');
         });
         this.observations.push(observation);
@@ -161,7 +160,6 @@ export class ObservationInputComponent {
                     this.snackBar.open(msg, '', {duration: 5000});
                     return;
                 }
-                console.log(headers);
 
                 list.slice(1, list.length).forEach((row, rowIndex) => {
                     let observation = new Map<string, string>();

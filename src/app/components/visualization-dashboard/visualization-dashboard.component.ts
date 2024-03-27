@@ -66,7 +66,6 @@ export class VisualizationDashboardComponent implements OnInit, OnDestroy {
             this.projectName = data.split("\n")[0].split(": ")[1];
             let parts = data.split("if-version");
             this.extractPlugins(parts[0]);
-            console.log(this.usedPlugins);
             this.extractContextsAndOutput(parts[1]);
             this.fields.filter(f => f.name != "timestamp" && f.name != "duration").forEach(f => {
                 this.charts.push(this.createLineChart(f));
@@ -120,7 +119,6 @@ export class VisualizationDashboardComponent implements OnInit, OnDestroy {
                 let key = line.split(":")[0].replace(" - ", "").trim();
                 if (key.length > 0) {
                     if (!this.fields.find(f => f.name == key)) {
-                        console.log("+" + key + "+");
                         let unit: string | undefined = undefined;
                         for (let p of this.usedPlugins) {
                             let output = p.outputAttributes.find(o => o.name == key);

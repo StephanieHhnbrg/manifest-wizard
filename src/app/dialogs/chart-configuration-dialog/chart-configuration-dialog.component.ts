@@ -32,13 +32,11 @@ export class ChartConfigurationDialogComponent implements OnInit {
     }
 
     public createPieChart(fieldName: string, aggregation: ChartAggregation) {
-        console.log(fieldName);
         let label = `${this.translate.instant(aggregation)}: ${fieldName}`;
         let field = this.fields.find(f => f.name == fieldName);
         if (field && field.unit) {
             label += ` (${field.unit})`
         }
-        console.log(label);
         let chart: ChartData = {
             fields: [fieldName],
             type: ChartType.PIE_CHART,
