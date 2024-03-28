@@ -66,7 +66,7 @@ export class VisualizationDashboardComponent implements OnInit, OnDestroy {
             this.projectName = data.split("\n")[0].split(": ")[1];
             let parts = data.split("if-version");
             this.extractPlugins(parts[0]);
-            this.extractContextsAndOutput(parts[1]);
+            this.extractContextsAndOutput(parts[1], parts[0]);
             this.fields.filter(f => f.name != "timestamp" && f.name != "duration").forEach(f => {
                 this.charts.push(this.createLineChart(f));
             })
@@ -92,7 +92,7 @@ export class VisualizationDashboardComponent implements OnInit, OnDestroy {
         });
     }
 
-    private extractContextsAndOutput(data: string) {
+    private extractContextsAndOutput(data: string, configuration: string) {
         let lines = data.split("\n");
         let currentContext = "";
         let processingOutput = false;
@@ -124,6 +124,13 @@ export class VisualizationDashboardComponent implements OnInit, OnDestroy {
                             let output = p.outputAttributes.find(o => o.name == key);
                             if (output) {
                                 unit = output.unit;
+                                if (unit && unit.includes("<") && unit.includes(">")) {
+                                    let u = unit.substring(unit.indexOf("<") + 1, unit.indexOf(">"));
+                                    let l = configuration.split("\n").find(l => l.includes(u));
+                                    if (l) {
+                                        unit = unit.replace(`<${u}>`, l.substring(l.indexOf(':') + 1).trim());
+                                    }
+                                }
                                 break;
                             }
 
@@ -211,19 +218,23 @@ export class VisualizationDashboardComponent implements OnInit, OnDestroy {
 
         let data: { name: string, value: number }[] = [];
         this.contexts.forEach(c => {
-            let result = 0;
-            this.observationContextMap.get(c)!.forEach(obs => {
-                switch (chart.aggregation) {
-                    case ChartAggregation.SUM:
-                    case ChartAggregation.AVG:
-                        result += +obs.get(chart.fields[0])!;
-                        break;
-                    case ChartAggregation.MIN:
-                        result = Math.min(result, +obs.get(chart.fields[0])!);
-                        break;
-                    case ChartAggregation.MAX:
-                        result = Math.max(result, +obs.get(chart.fields[0])!);
-                        break;
+            let observations = this.observationContextMap.get(c)!;
+            let result = +observations[0].get(chart.fields[0])!;
+            observations.splice(1).forEach(obs => {
+                let value = obs.get(chart.fields[0]);
+                if (value) {
+                    switch (chart.aggregation) {
+                        case ChartAggregation.SUM:
+                        case ChartAggregation.AVG:
+                            result += +value;
+                            break;
+                        case ChartAggregation.MIN:
+                            result = Math.min(result, +value);
+                            break;
+                        case ChartAggregation.MAX:
+                            result = Math.max(result, +value);
+                            break;
+                    }
                 }
             });
             if (chart.aggregation == ChartAggregation.AVG) {

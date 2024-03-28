@@ -163,8 +163,31 @@ export class ObservationInputComponent {
 
                 list.slice(1, list.length).forEach((row, rowIndex) => {
                     let observation = new Map<string, string>();
+                    let cells = [];
                     let context = "";
-                    let cells = row.replace('\r', '').split(',');
+                    if (row.includes('"')) {
+                        console.log(row);
+                        // comma numbers are displayed as "x,xx", therefore the row can not simply be split by ,
+                        let r = row;
+                        while (r.length > 0) {
+                            if (r.startsWith('"')) {
+                                let end = r.substring(1).indexOf('"');
+                                cells.push(r.substring(1, end + 1));
+                                console.log(r.substring(1, end + 1));
+                                console.log(r.substring(end + 3));
+                                r = end < r.length - 3 ? r.substring(end + 3) : "";
+                            } else {
+                                let index = r.indexOf(',');
+                                let end = index >= 0 ? index : r.length - 1;
+                                cells.push(r.substring(0, end));
+                                console.log(r.substring(0, end));
+                                r = end < r.length - 1 ? r.substring(end + 1) : "";
+                            }
+                        }
+                    } else {
+                        cells = row.replace('\r', '').split(',');
+                    }
+
                     cells.forEach((cell, colIndex) => {
                         let inputField = this.inputFields.find(i => i.name == headers[colIndex])
                         if (inputField && inputField.type != "string") {
