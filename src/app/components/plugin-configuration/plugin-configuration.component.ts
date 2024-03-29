@@ -90,6 +90,10 @@ export class PluginConfigurationComponent implements OnInit {
     getPluginDescriptionTranslationKey(plugin: string): string {
         return `PLUGIN.${plugin.toUpperCase()}.DESCRIPTION`;
     }
+
+    public isString($event: any): boolean {
+        return typeof $event === "string";
+    }
 }
 
 export interface PluginOption {

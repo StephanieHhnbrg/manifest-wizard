@@ -49,6 +49,7 @@ import {
     ChartConfigurationDialogComponent
 } from "./dialogs/chart-configuration-dialog/chart-configuration-dialog.component";
 import {MatTabsModule} from "@angular/material/tabs";
+import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 
 @NgModule({
     imports: [
@@ -98,6 +99,7 @@ import {MatTabsModule} from "@angular/material/tabs";
         MatPaginatorModule,
         MatSortModule,
         MatTabsModule,
+        NgxMatTimepickerModule,
     ],
     declarations: [
         AppComponent,

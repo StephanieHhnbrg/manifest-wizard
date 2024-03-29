@@ -1,16 +1,15 @@
 <mat-form-field>
-    <input matInput [matDatepicker]="datepicker" (dateChange)="updateTimestampByPicker(datepicker_input.value)"
-           #datepicker_input style="display:none">
-    <input matInput [value]="getFormattedTimeStamp(datepicker_input.value, '00:00')"
+    <input matInput [matDatepicker]="datepicker" (dateChange)="updateDateByPicker(datepicker_input.value)"
+           [formControl]="pickerFormControl" #datepicker_input style="display:none">
+    <input matInput [value]="timestamp"
            (input)="updateTimestampByInput(input.value)" #input id="input">
     <mat-hint>{{label}} <span [ngClass]="{'highlighted-hint': !isInputValid}">YYYY-MM-DD hh:mm</span></mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
     <mat-datepicker #datepicker></mat-datepicker>
-    <mat-datepicker-toggle matIconSuffix [matMenuTriggerFor]="menu" #menuTrigger>
+    <mat-datepicker-toggle matIconSuffix (click)="pickerH.open()">
         <mat-icon matDatepickerToggleIcon>alarm</mat-icon>
     </mat-datepicker-toggle>
 </mat-form-field>
-<mat-menu #menu="matMenu" xPosition="before">
-    TODO input time
-</mat-menu>
+<ngx-mat-timepicker (timeSet)="updateTime(datepicker_input.value, $event)" #pickerH>
+</ngx-mat-timepicker>
 &nbsp;&nbsp;

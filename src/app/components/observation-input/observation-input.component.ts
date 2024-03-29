@@ -166,21 +166,17 @@ export class ObservationInputComponent {
                     let cells = [];
                     let context = "";
                     if (row.includes('"')) {
-                        console.log(row);
                         // comma numbers are displayed as "x,xx", therefore the row can not simply be split by ,
                         let r = row;
                         while (r.length > 0) {
                             if (r.startsWith('"')) {
                                 let end = r.substring(1).indexOf('"');
                                 cells.push(r.substring(1, end + 1));
-                                console.log(r.substring(1, end + 1));
-                                console.log(r.substring(end + 3));
                                 r = end < r.length - 3 ? r.substring(end + 3) : "";
                             } else {
                                 let index = r.indexOf(',');
                                 let end = index >= 0 ? index : r.length - 1;
                                 cells.push(r.substring(0, end));
-                                console.log(r.substring(0, end));
                                 r = end < r.length - 1 ? r.substring(end + 1) : "";
                             }
                         }
@@ -231,7 +227,7 @@ export class ObservationInputComponent {
         } else if (type == "number") {
             return !isNaN(Number(data));
         } else if (type == "timestamp") {
-            let TIMESTAMP_REGEX = "(19|20)\\d{2}-(0[1-9]|1[1,2])-(0[1-9]|(1|2)[0-9]|3(0|1)) ((0|1)[0-9]|2[1-3]):([0-5][0-9])";
+            let TIMESTAMP_REGEX = "(19|20)\\d{2}-(0[1-9]|1[1,2])-(0[1-9]|(1|2)[0-9]|3(0|1)) ((0|1)[0-9]|2[0-3]):([0-5][0-9])";
             return new RegExp(TIMESTAMP_REGEX).test(data);
         }
         return true;
@@ -276,4 +272,11 @@ export class ObservationInputComponent {
         this.observationsEdited.emit(this.observationContextMap);
     }
 
+    public isString($event: any): boolean {
+        return typeof $event === "string";
+    }
+
+    public areInputsMissing(): boolean {
+        return this.inputFields.findIndex(i => !i.value && !i.optional) >= 0;
+    }
 }

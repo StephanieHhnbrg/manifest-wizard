@@ -36,7 +36,6 @@
     "DESCRIPTION": "description",
     "CONFIGURE_PLUGINS": "Configure your IF Plugin Pipeline",
     "ADD_OBSERVATIONS": "Add your observations",
-    "CHOOSE_PLUGIN": "Select the IF Plugins above.",
     "COPIED_TO_CLIPBOARD": "Copied to clipboard!"
   },
   "BUTTON": {
@@ -61,12 +60,14 @@
   },
   "SNACKBAR": {
     "INFO_AT_LEAST_1PLUGIN": "Select at least one plugin, before adding your observations.",
+    "INFO_CONFIGURE_PLUGINS_N_OBS": "Select at least one plugin and add observations first.",
     "CONFIGURE_PLUGIN_FIRST": "Configure the '{{param}}' in the {{plugin}} plugin, before adding your observations.",
     "UPLOAD_CSV_FILE": "Upload your observations as a CSV file.",
     "CSV_CONTEXT_COL_MISSING": "Observations could not be added. The 'context' column is missing.",
     "CSV_CONTEXT_UNDEFINED": "The observation in row {{row}} could not be added. Context is undefined.",
     "CSV_INVALID_TYPE": "The data in row {{row}} and column {{col}} is invalid. It should be {{type}}. Please edit it.",
-    "UPLOAD_YAML_FILE": "Upload your output data as a Yaml file."
+    "UPLOAD_YAML_FILE": "Upload your output data as a Yaml file.",
+    "MISSING_CONFIGURATION": "Plugin Configurations are mising. Complete step 1 first!"
   },
   "PIPELINE_DIALOG": {
     "TITLE": "Your Pipeline",

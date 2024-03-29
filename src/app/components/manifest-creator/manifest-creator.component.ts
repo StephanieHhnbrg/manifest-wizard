@@ -13,6 +13,7 @@ import {Subject, Subscription} from "rxjs";
 import {InputDataDialogComponent} from "../../dialogs/input-data-dialog/input-data-dialog.component";
 import {ObservationInputComponent} from "../observation-input/observation-input.component";
 import {InputData} from "../../data/input.data";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({
@@ -28,6 +29,7 @@ export class ManifestCreatorComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
 
     constructor(private translate: TranslateService,
+                private snackBar: MatSnackBar,
                 private dialog: MatDialog) {
     }
 
@@ -163,11 +165,39 @@ export class ManifestCreatorComponent implements OnInit, OnDestroy {
         return "[]";
     }
 
-    public async copyManifestToClipboard() {
+    private hasMissingConfiguration(): boolean {
+        return this.selectedPlugins.findIndex(p =>
+            p.manifestAttributes.config.findIndex(c => !c.value && !c.optional) >= 0
+            || p.manifestAttributes.globalConfig.findIndex(gc => !gc.value && !gc.optional) >= 0
+            || p.manifestAttributes.defaults.findIndex(d => !d.value && !d.optional) >= 0
+        ) >= 0;
+    }
+
+    private prepareManifest(): number {
+        if (this.selectedPlugins.length == 0) {
+            let msg = this.translate.instant("SNACKBAR.INFO_CONFIGURE_PLUGINS_N_OBS");
+            this.snackBar.open(msg, '', {duration: 5000});
+            return -1;
+        }
+
+        if (this.hasMissingConfiguration()) {
+            let msg = this.translate.instant("SNACKBAR.MISSING_CONFIGURATION");
+            this.snackBar.open(msg, '', {duration: 5000});
+            return -1;
+        }
+
         if (this.project.name.length == 0) {
             this.project.name = 'manifest-wizard';
         }
         this.updateManifest(this.selectedPlugins, this.observations);
+        return 1;
+    }
+
+    public async copyManifestToClipboard() {
+        if (this.prepareManifest() < 0) {
+            return;
+        }
+
         await navigator.clipboard.writeText(this.manifest);
         await new Promise(
             (resolve) =>
@@ -180,10 +210,10 @@ export class ManifestCreatorComponent implements OnInit, OnDestroy {
     }
 
     public downloadManifestAsYmlFile() {
-        if (this.project.name.length == 0) {
-            this.project.name = 'manifest-wizard';
+        if (this.prepareManifest() < 0) {
+            return;
         }
-        this.updateManifest(this.selectedPlugins, this.observations);
+
         const blob = new Blob([this.manifest], {type: 'yaml'});
         const url = window.URL.createObjectURL(blob);
         let a = document.createElement('a');

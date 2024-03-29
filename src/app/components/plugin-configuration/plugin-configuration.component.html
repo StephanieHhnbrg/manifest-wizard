@@ -25,7 +25,7 @@
                 </mat-form-field>
 
                 <app-time-stamp-picker *ngIf="input.type=='timestamp'" [label]="input.name"
-                                       (change)="input.value=$event"></app-time-stamp-picker>
+                                       (change)="input.value=isString($event)? $event : input.value!"></app-time-stamp-picker>
 
                 <mat-checkbox *ngIf="input.type=='boolean'" (change)="input.value=($event.checked.toString())">
                     {{input.name}} <span *ngIf="input.optional" class="smaller">(optional)</span>
