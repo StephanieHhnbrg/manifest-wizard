@@ -218,7 +218,7 @@ export class VisualizationDashboardComponent implements OnInit, OnDestroy {
 
         let data: { name: string, value: number }[] = [];
         this.contexts.forEach(c => {
-            let observations = this.observationContextMap.get(c)!;
+            let observations = [...this.observationContextMap.get(c)!];
             let result = +observations[0].get(chart.fields[0])!;
             observations.splice(1).forEach(obs => {
                 let value = obs.get(chart.fields[0]);

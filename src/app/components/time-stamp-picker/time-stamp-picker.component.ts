@@ -45,8 +45,11 @@ export class TimeStampPickerComponent {
         let ampm = time.split(" ")[1];
         let hour = +time.split(":")[0];
         let minute = time.split(":")[1].split(" ")[0];
-        if (ampm == "PM") {
+        if (ampm == "PM" && hour < 12) {
             hour += 12;
+        }
+        if (ampm == "AM" && hour == 12) {
+            hour = 0;
         }
 
         let prefix = hour < 10 ? "0" : "";

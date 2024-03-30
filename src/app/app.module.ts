@@ -50,6 +50,9 @@ import {
 } from "./dialogs/chart-configuration-dialog/chart-configuration-dialog.component";
 import {MatTabsModule} from "@angular/material/tabs";
 import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
+import {
+    PluginConfigurationByContextDialogComponent
+} from "./dialogs/plugin-configuration-by-context-dialog/plugin-configuration-by-context-dialog.component";
 
 @NgModule({
     imports: [
@@ -115,6 +118,7 @@ import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
         InputDataDialogComponent,
         TerminalInstructionDialog,
         ChartConfigurationDialogComponent,
+        PluginConfigurationByContextDialogComponent,
     ],
     providers: [provideRouter(ROUTES), provideNativeDateAdapter()],
     bootstrap: [AppComponent]

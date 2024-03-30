@@ -8,12 +8,15 @@ import {
     TerminalInstructionDialog
 } from "../../dialogs/terminal-instruction-dialog/terminal-instruction-dialog.component";
 import {PipelineDialogComponent} from "../../dialogs/pipeline-dialog/pipeline-dialog.component";
-import {getInputLabel, getUnitLabel} from "../../data/plugin.utils";
+import {findParentInput, getInputLabel, getUnitLabel} from "../../data/plugin.utils";
 import {Subject, Subscription} from "rxjs";
 import {InputDataDialogComponent} from "../../dialogs/input-data-dialog/input-data-dialog.component";
 import {ObservationInputComponent} from "../observation-input/observation-input.component";
 import {InputData} from "../../data/input.data";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {
+    PluginConfigurationByContextDialogComponent
+} from "../../dialogs/plugin-configuration-by-context-dialog/plugin-configuration-by-context-dialog.component";
 
 
 @Component({
@@ -80,6 +83,9 @@ export class ManifestCreatorComponent implements OnInit, OnDestroy {
         let pipelineBody = "      pipeline:\n";
         let configBody = "      config:\n";
         let defaultsBody = "      defaults:\n";
+        let configBodyByContext = new Map<string, string>();
+        let defaultsBodyByContext = new Map<string, string>();
+
 
         selectedPlugins.forEach(p => {
             pluginsBody += `    ${p.pipelineId}:\n`;
@@ -124,12 +130,35 @@ export class ManifestCreatorComponent implements OnInit, OnDestroy {
             if (p.manifestAttributes.config.length > 0) {
                 configBody += `        ${p.pipelineId}:\n`;
             }
-            p.manifestAttributes.config.forEach((config, index) => {
+            p.manifestAttributes.config.forEach((config) => {
                 configBody += `          ${config.name}: ${this.getConfigValue(config)}\n`;
             });
-            p.manifestAttributes.defaults.forEach((config, index) => {
+            p.manifestAttributes.defaults.forEach((config) => {
                 defaultsBody += `        ${config.name}: ${config.value}\n`;
             });
+
+            if (p.manifestAttributes.configByContext && p.manifestAttributes.configByContext.size > 0) {
+                Array.from(p.manifestAttributes.configByContext.keys()).forEach(c => {
+                    let body = configBodyByContext.has(c) ? configBodyByContext.get(c)! : "      config:\n";
+
+                    if (p.manifestAttributes.configByContext!.get(c)!.length > 0) {
+                        body += `        ${p.pipelineId}:\n`;
+                    }
+                    p.manifestAttributes.configByContext!.get(c)!.forEach((config) => {
+                        body += `          ${config.name}: ${this.getConfigValue(config)}\n`;
+                    });
+                    configBodyByContext.set(c, body);
+                })
+            }
+            if (p.manifestAttributes.defaultsByContext && p.manifestAttributes.defaultsByContext.size > 0) {
+                Array.from(p.manifestAttributes.defaultsByContext.keys()).forEach(c => {
+                    let body = defaultsBodyByContext.has(c) ? defaultsBodyByContext.get(c)! : "      defaults:\n";
+                    p.manifestAttributes.defaultsByContext!.get(c)!.forEach((config) => {
+                        body += `        ${config.name}: ${config.value}\n`;
+                    });
+                    defaultsBodyByContext.set(c, body);
+                })
+            }
 
         });
         let observationsBody = "" +
@@ -150,7 +179,10 @@ export class ManifestCreatorComponent implements OnInit, OnDestroy {
                 });
 
             });
-            observationsBody += contextHeader + pipelineBody + configBody + defaultsBody + inputBody;
+
+            let cBody = configBodyByContext.has(context) ? configBodyByContext.get(context)! : configBody;
+            let dBody = defaultsBodyByContext.has(context) ? defaultsBodyByContext.get(context)! : defaultsBody;
+            observationsBody += contextHeader + pipelineBody + cBody + dBody + inputBody;
         });
 
         this.manifest = header + pluginsBody + observationsBody;
@@ -233,25 +265,60 @@ export class ManifestCreatorComponent implements OnInit, OnDestroy {
     }
 
     public showPipeline() {
-        this.dialog.open(PipelineDialogComponent, {
-            data: [...this.selectedPlugins].map(p => {
-                let input = p.manifestAttributes.input.map(attr => {
-                    return {
+        let pluginOrderChanged$ = new Subject<PluginData[]>();
+        let plugins = [...this.selectedPlugins].map(p => {
+            let input: InputData[] = [];
+            p.manifestAttributes.input.forEach(attr => {
+                if (attr.name.startsWith('<') && attr.name.endsWith('>')) {
+                    let parent = findParentInput(attr.name, p);
+                    if (parent && parent.type == "list" && parent.value) {
+                        parent.value.split(',').forEach(child => {
+                            input.push({
+                                name: child.trim(),
+                                type: "",
+                                unit: getUnitLabel(attr.unit, p),
+                                optional: attr.optional
+                            });
+                        });
+                    } else {
+                        let name = (parent && parent.value) ? parent.value : attr.name;
+                        input.push({
+                            name: name,
+                            type: "",
+                            unit: getUnitLabel(attr.unit, p),
+                            optional: attr.optional
+                        });
+                    }
+                } else {
+                    input.push({
                         name: getInputLabel(attr.name, p),
                         type: "",
                         unit: getUnitLabel(attr.unit, p),
                         optional: attr.optional
-                    }
-                });
-                let manifestAttributes = {globalConfig: [], config: [], input, defaults: []}
-                let outputAttributes = p.outputAttributes.map(attr => {
-                    return {name: getInputLabel(attr.name, p), unit: getUnitLabel(attr.unit, p)}
-                });
+                    });
+                }
+            });
+            let manifestAttributes = {globalConfig: [], config: [], input, defaults: []}
+            let outputAttributes = p.outputAttributes.map(attr => {
+                return {name: getInputLabel(attr.name, p), unit: getUnitLabel(attr.unit, p)}
+            });
 
-                return {name: p.name, method: p.method, pipelineId: p.pipelineId, manifestAttributes, outputAttributes}
-            })
+            return {name: p.name, method: p.method, pipelineId: p.pipelineId, manifestAttributes, outputAttributes}
         });
+
+
+        this.dialog.open(PipelineDialogComponent, {
+            data: {plugins, orderChanged$: pluginOrderChanged$},
+            autoFocus: false
+        });
+
+        this.subscriptions.push(pluginOrderChanged$.asObservable().subscribe((updatedPlugins: PluginData[]) => {
+            this.selectedPlugins = updatedPlugins;
+            this.updateManifest(this.selectedPlugins, this.observations);
+        }));
+
     }
+
 
     public showInputData() {
         let removedObservation$ = new Subject<Map<string, string>>();
@@ -276,6 +343,25 @@ export class ManifestCreatorComponent implements OnInit, OnDestroy {
         this.subscriptions.push(dialogRef.afterClosed().subscribe((observationToBeEdit: Map<string, string>) => {
             if (observationToBeEdit) {
                 this.observationInput.initEditingObservation(observationToBeEdit);
+            }
+        }));
+    }
+
+    public isAbleToConfigurePluginsByContext(): boolean {
+        return Array.from(this.observations.keys()).length > 1
+            && this.selectedPlugins.findIndex(p => p.manifestAttributes.config.length > 1 || p.manifestAttributes.defaults.length > 1) >= 0;
+    }
+
+    public openPluginConfiguration() {
+        let dialogRef = this.dialog.open(PluginConfigurationByContextDialogComponent, {
+            data: {plugins: this.selectedPlugins, contexts: Array.from(this.observations.keys())},
+            autoFocus: false
+        });
+
+        this.subscriptions.push(dialogRef.afterClosed().subscribe((updatedPluginConfiguration: PluginData[]) => {
+            if (updatedPluginConfiguration && updatedPluginConfiguration.length == this.selectedPlugins.length) {
+                this.selectedPlugins = updatedPluginConfiguration;
+                this.updateManifest(this.selectedPlugins, this.observations);
             }
         }));
     }

@@ -66,8 +66,8 @@
                         aria-label="Change Plugin Order" (click)="switchWithNext(i); nextStep();">
                     <mat-icon class="rotate-icon" aria-hidden="false" fontIcon="straight"></mat-icon>
                 </button>
-                <button class="smaller-button" *ngIf="i!=0" mat-icon-button aria-label="Change Plugin Order"
-                        (click)="switchWithPrevious(i); prevStep();">
+                <button class="smaller-button" *ngIf="i!=0" mat-icon-button mat-icon-button
+                        aria-label="Change Plugin Order" (click)="switchWithPrevious(i); prevStep();">
                     <mat-icon aria-hidden="false" fontIcon="straight"></mat-icon>
                 </button>
             </div>

@@ -36,7 +36,8 @@
     "DESCRIPTION": "Beschreibung",
     "CONFIGURE_PLUGINS": "Konfigurieren Sie Ihre IF Plugin Pipeline",
     "ADD_OBSERVATIONS": "Fügen Sie Ihre Daten hinzu",
-    "COPIED_TO_CLIPBOARD": "Kopiert!"
+    "COPIED_TO_CLIPBOARD": "Kopiert!",
+    "CONFIGURE_CONFIGURATION_BY_CONTEXT": "Mehrere Kontexte sind definiert. Möchten Sie die Plugins individuell konfigurieren?"
   },
   "BUTTON": {
     "GET_STARTED": "Lege Los",
@@ -48,7 +49,9 @@
     "CREATE_VISUALIZATION": "Ausgabe visualisieren",
     "UPLOAD_FILE": "Laden Sie Ihre Ausgabe YAML hoch",
     "CONFIGURE_CHARTS": "Konfiguriere Diagramme",
-    "CREATE_CHART": "Erstelle Diagram"
+    "CREATE_CHART": "Erstelle Diagram",
+    "CLICK_HERE": "Klicke hier",
+    "SAVE": "Speichern"
   },
   "INPUT": {
     "GLOBAL_CONFIG": "Globale Konfiguration",
@@ -65,6 +68,7 @@
     "UPLOAD_CSV_FILE": "Laden Sie Ihre Daten als CSV Datei hoch.",
     "CSV_CONTEXT_COL_MISSING": "Die Daten konnten nicht hinzugefügt werden. Die 'context' Spalte fehlt.",
     "CSV_CONTEXT_UNDEFINED": "Die Daten in Zeile {{row}} konnten nicht hinzugefügt werden. 'context' ist nicht definiert.",
+    "CSV_REQUIRED_HEADERS_MISSING": "Die folgenden erforderlichen Attribute fehlen: {{fields}}. Stellen Sie sicher, dass Sie die fehlenden Daten ergänzen.",
     "CSV_INVALID_TYPE": "Der Wert in Zeile {{row}} und Spalte {{col}} ist ungültig. Es sollte {{type}} sein. Bitte editiere es.",
     "UPLOAD_YAML_FILE": "Laden Sie Ihre Ausgabe Daten als Yaml Datei hoch.",
     "MISSING_CONFIGURATION": "Plugin Konfigurationen fehlen. Vervollständige Schritt 1 zuerst!"
@@ -74,6 +78,7 @@
     "HINT_1": "Hinweis: Die kursiven Eingabe Parameter werden durch Ausgaben von vorherigen Plugins in der Pipeline definiert.",
     "HINT_2": "Hinweis: Falls Eingabe oder Ausgabe Attribute in <> Klammern angezeigt werden, müssen Sie noch dessen Namen konfigurieren."
   },
+  "PLUGIN_CONFIGURATION_BY_CONTEXT_DIALOG.TITLE": "Plugin Konfiguration durch Kontext",
   "INPUT_DATA_DIALOG": {
     "TITLE": "Ihre Daten",
     "FILTER_BY_CONTEXT": "Filter durch Kontext"

@@ -25,6 +25,15 @@
                 </app-observation-input>
             </mat-step>
         </mat-vertical-stepper>
+
+        <div *ngIf="isAbleToConfigurePluginsByContext()" class="context-configuration">
+            <p>&nbsp;</p>
+            <small>
+                {{"INFO.CONFIGURE_CONFIGURATION_BY_CONTEXT" | translate}}
+                <a class="action" (click)="openPluginConfiguration()">{{"BUTTON.CLICK_HERE" | translate}}</a>
+            </small>
+        </div>
+
         <div class="button-row">
             <button *ngIf="selectedPlugins.length>0" (click)="showPipeline()"
                     mat-raised-button>

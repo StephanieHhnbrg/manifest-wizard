@@ -36,8 +36,9 @@ export class InputDataDialogComponent implements OnInit, AfterViewInit {
         }
         this.allData = [...this.data.input]
         this.dataSource = new MatTableDataSource([...this.data.input]);
-        this.dataSource.sortingDataAccessor = (map, property) => {
-            return map.get(property)!;
+        this.dataSource.sortingDataAccessor = (map, property): string | number => {
+            let value = map.get(property)!;
+            return isNaN(Number(value)) ? value : +value;
         };
         this.contexts = this.data.contexts;
     }

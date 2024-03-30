@@ -12,4 +12,7 @@ export interface ManifestInputData {
     defaults: InputData[];
     config: InputData[];
     input: InputData[];
+
+    defaultsByContext?: Map<string, InputData[]>
+    configByContext?: Map<string, InputData[]>
 }

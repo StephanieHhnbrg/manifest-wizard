@@ -1,0 +1,59 @@
+<div class="dialog">
+    <h2 mat-dialog-title>{{"PLUGIN_CONFIGURATION_BY_CONTEXT_DIALOG.TITLE" | translate}}</h2>
+    <mat-dialog-content>
+        <div *ngIf="!isTableEmpty(configDataSource)">
+            {{"INPUT.CONFIG" | translate}}
+
+            <table mat-table [dataSource]="configDataSource" class="mat-elevation-z8">
+
+                <ng-container *ngFor="let header of configHeaders" [matColumnDef]="header">
+                    <th mat-header-cell *matHeaderCellDef> {{header}} </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span *ngIf="header=='context'">{{getTableContent(header, element)}}</span>
+                        <div *ngIf="header!='context'">
+                            <mat-form-field>
+                                <input matInput #input [value]="getTableContent(header, element)"
+                                       (input)="changeTableContent(header, element, input.value)">
+                            </mat-form-field>
+                        </div>
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="configHeaders"></tr>
+                <tr mat-row *matRowDef="let row; columns: configHeaders;"></tr>
+            </table>
+            <p>&nbsp;</p>
+        </div>
+        <div *ngIf="!isTableEmpty(defaultsDataSource)">
+            {{"INPUT.DEFAULTS" | translate}}
+
+            <table mat-table [dataSource]="defaultsDataSource" class="mat-elevation-z8">
+
+                <ng-container *ngFor="let header of defaultsHeaders" [matColumnDef]="header">
+                    <th mat-header-cell *matHeaderCellDef> {{header}} </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span *ngIf="header=='context'">{{getTableContent(header, element)}}</span>
+                        <div *ngIf="header!='context'">
+                            <mat-form-field>
+                                <input #input matInput [value]="getTableContent(header, element)"
+                                       (input)="changeTableContent(header, element, input.value)">
+                            </mat-form-field>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="defaultsHeaders"></tr>
+                <tr mat-row *matRowDef="let row; columns: defaultsHeaders;"></tr>
+            </table>
+            <p>&nbsp;</p>
+        </div>
+
+        <div class="action-row">
+            <button mat-raised-button aria-label="Save Configuration Data" color="primary" (click)="save()">
+                <mat-icon aria-hidden="false" fontIcon="save"></mat-icon>
+                {{"BUTTON.SAVE" | translate}}
+            </button>
+        </div>
+    </mat-dialog-content>
+</div>

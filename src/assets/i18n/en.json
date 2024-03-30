@@ -36,7 +36,8 @@
     "DESCRIPTION": "description",
     "CONFIGURE_PLUGINS": "Configure your IF Plugin Pipeline",
     "ADD_OBSERVATIONS": "Add your observations",
-    "COPIED_TO_CLIPBOARD": "Copied to clipboard!"
+    "COPIED_TO_CLIPBOARD": "Copied to clipboard!",
+    "CONFIGURE_CONFIGURATION_BY_CONTEXT": "More than 1 context is declared. Would you like to configure the plugins individually?"
   },
   "BUTTON": {
     "GET_STARTED": "Get started",
@@ -48,7 +49,9 @@
     "CREATE_VISUALIZATION": "Visualize output",
     "UPLOAD_FILE": "Upload your output YAML",
     "CONFIGURE_CHARTS": "Configure charts",
-    "CREATE_CHART": "Create chart"
+    "CREATE_CHART": "Create chart",
+    "CLICK_HERE": "Click here",
+    "SAVE": "Save"
   },
   "INPUT": {
     "GLOBAL_CONFIG": "Global Configuration",
@@ -66,6 +69,7 @@
     "CSV_CONTEXT_COL_MISSING": "Observations could not be added. The 'context' column is missing.",
     "CSV_CONTEXT_UNDEFINED": "The observation in row {{row}} could not be added. Context is undefined.",
     "CSV_INVALID_TYPE": "The data in row {{row}} and column {{col}} is invalid. It should be {{type}}. Please edit it.",
+    "CSV_REQUIRED_HEADERS_MISSING": "The following required attributes are missing: {{fields}}. Make sure to add the missing data.",
     "UPLOAD_YAML_FILE": "Upload your output data as a Yaml file.",
     "MISSING_CONFIGURATION": "Plugin Configurations are mising. Complete step 1 first!"
   },
@@ -74,6 +78,7 @@
     "HINT_1": "Hint: The cursived styled input parameters are defined by the output of a previous plugin in the pipeline.",
     "HINT_2": "Hint: If any input or output attributes are displayed in <> brackets, you still need to configure their names."
   },
+  "PLUGIN_CONFIGURATION_BY_CONTEXT_DIALOG.TITLE": "Plugin Configuration by Context",
   "INPUT_DATA_DIALOG": {
     "TITLE": "Your Observation Data",
     "FILTER_BY_CONTEXT": "Filter by context"

@@ -9,7 +9,7 @@
                 </mat-select>
             </mat-form-field>
 
-            <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+            <table mat-table matSort matSortDisableClear [dataSource]="dataSource" class="mat-elevation-z8">
 
                 <ng-container *ngFor="let header of headers" [matColumnDef]="header">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> {{header}} </th>

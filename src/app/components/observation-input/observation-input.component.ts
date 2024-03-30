@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {PluginData} from "../../data/plugin.data";
 import {InputData} from "../../data/input.data";
-import {MatDialog} from "@angular/material/dialog";
 import {findParentInput, getUnitLabel} from "../../data/plugin.utils";
 import {TranslateService} from "@ngx-translate/core";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -9,7 +8,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 @Component({
     selector: 'app-observation-input',
     templateUrl: './observation-input.component.html',
-    styleUrl: './observation-input.component.css'
+    styleUrl: './observation-input.component.scss'
 })
 export class ObservationInputComponent {
 
@@ -26,8 +25,7 @@ export class ObservationInputComponent {
     @Output() observationsEdited = new EventEmitter<Map<string, Map<string, string>[]>>();
 
 
-    constructor(private dialog: MatDialog,
-                private snackBar: MatSnackBar,
+    constructor(private snackBar: MatSnackBar,
                 private translate: TranslateService) {
     }
 
@@ -78,12 +76,14 @@ export class ObservationInputComponent {
                                 });
                             } else {
                                 parent.value!.split(',').forEach(s => {
-                                    this.inputFields.push({
-                                        name: s.trim(),
-                                        type: input.type,
-                                        unit: getUnitLabel(input.unit, plugin),
-                                        optional: input.optional
-                                    });
+                                    if (!this.isDefinedByPrevPluginOutput(s.trim(), index, plugins)) {
+                                        this.inputFields.push({
+                                            name: s.trim(),
+                                            type: input.type,
+                                            unit: getUnitLabel(input.unit, plugin),
+                                            optional: input.optional
+                                        });
+                                    }
                                 });
                             }
                         } else if (!parent || !parent.optional) {
@@ -159,6 +159,13 @@ export class ObservationInputComponent {
                     let msg = this.translate.instant("SNACKBAR.CSV_CONTEXT_COL_MISSING");
                     this.snackBar.open(msg, '', {duration: 5000});
                     return;
+                }
+
+                let missingFields = this.inputFields.filter(i => headers.findIndex(h => h == i.name && !i.optional) < 0)
+                if (missingFields.length > 0) {
+                    let fields = missingFields.map(mF => mF.name);
+                    let msg = this.translate.instant("SNACKBAR.CSV_REQUIRED_HEADERS_MISSING", {fields: fields.toString()});
+                    this.snackBar.open(msg, '', {duration: 5000});
                 }
 
                 list.slice(1, list.length).forEach((row, rowIndex) => {
@@ -279,4 +286,5 @@ export class ObservationInputComponent {
     public areInputsMissing(): boolean {
         return this.inputFields.findIndex(i => !i.value && !i.optional) >= 0;
     }
+
 }

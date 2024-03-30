@@ -1,5 +1,9 @@
 <div class="dialog">
     <h2 mat-dialog-title>{{"PIPELINE_DIALOG.TITLE" | translate}}</h2>
+    <button *ngIf="plugins.length>1" class="reordering-icon" (click)="changeOrder()" mat-icon-button
+            aria-label="Change Order of Plugins">
+        <mat-icon aria-hidden="false" fontIcon="low_priority"></mat-icon>
+    </button>
     <mat-dialog-content>
         <ng-container *ngFor="let p of plugins; index as i">
             <div class="step">
@@ -11,7 +15,20 @@
                 </div>
                 <mat-icon [ngClass]="{'hidden':p.manifestAttributes.input.length==0}" aria-hidden="false"
                           fontIcon="chevron_right"></mat-icon>
+
+                <button class="smaller-button" [ngClass]="{'hidden': i==plugins.length-1 || !isChangingOrder}"
+                        mat-icon-button
+                        aria-label="Change Plugin Order" (click)="switchWithNext(i);">
+                    <mat-icon class="rotate-icon" aria-hidden="false" fontIcon="straight"></mat-icon>
+                </button>
+
                 <mat-chip>{{p.name}}</mat-chip>
+
+                <button class="smaller-button" [ngClass]="{'hidden': i==0 || !isChangingOrder}" mat-icon-button
+                        aria-label="Change Plugin Order" (click)="switchWithPrevious(i);">
+                    <mat-icon aria-hidden="false" fontIcon="straight"></mat-icon>
+                </button>
+
                 <mat-icon aria-hidden="false" fontIcon="chevron_right"></mat-icon>
                 <div class="output">
                     <span *ngFor="let output of p.outputAttributes">
