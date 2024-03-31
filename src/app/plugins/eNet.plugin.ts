@@ -1,7 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const ENetPlugin: PluginData = {
-    name: "E-Net", method: "ENet", path: "@grnsft/if-plugins", pipelineId: "e-net",
+    name: "E-Net",
+    method: "ENet",
+    path: "@grnsft/if-plugins",
+    pipelineId: "e-net",
+    pCategory: [PluginCategory.ENERGY],
+    ghLink: "https://github.com/Green-Software-Foundation/if-plugins/tree/main/src/lib/e-net",
 
     manifestAttributes: {
         globalConfig: [

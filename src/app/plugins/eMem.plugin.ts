@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const EMemPlugin: PluginData = {
     name: "E-Mem",
     method: "EMem",
     path: "@grnsft/if-plugins",
     pipelineId: "e-mem",
+    pCategory: [PluginCategory.ENERGY],
+    ghLink: "https://github.com/Green-Software-Foundation/if-plugins/tree/main/src/lib/e-mem",
 
     manifestAttributes: {
         globalConfig: [

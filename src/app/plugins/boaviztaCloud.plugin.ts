@@ -1,11 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const BoaviztaCloudPlugin: PluginData = {
     name: "Boavizta Cloud",
     method: "BoaviztaCloudOutput",
     path: "@grnsft/if-unofficial-plugins",
     pipelineId: "boavizta-cloud",
-
+    pCategory: [PluginCategory.CARBON, PluginCategory.CLOUD, PluginCategory.ENERGY],
+    ghLink: "https://github.com/Green-Software-Foundation/if-unofficial-plugins/tree/main/src/lib/boavizta",
 
     manifestAttributes: {
         globalConfig: [

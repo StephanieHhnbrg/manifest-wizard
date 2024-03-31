@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const MockObservationsPlugin: PluginData = {
     name: "Mock Observations",
     method: "MockObservations",
     path: "@grnsft/if-plugins",
     pipelineId: "mock-observations",
+    pCategory: [PluginCategory.HELPER],
+    ghLink: "https://github.com/Green-Software-Foundation/if-plugins/tree/main/src/lib/mock-observations",
 
     manifestAttributes: {
         globalConfig: [

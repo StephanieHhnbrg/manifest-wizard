@@ -126,5 +126,20 @@
     "AVG": "Durchschnitt",
     "MIN": "Minimum",
     "MAX": "Maximum"
+  },
+  "PLUGIN_OVERVIEW_DIALOG": {
+    "TITLE": "Plugin Übersicht",
+    "PLUGIN": "Plugin",
+    "CATEGORY": "Kategorie",
+    "DESCRIPTION": "Beschreibung"
+  },
+  "PLUGIN_CATEGORY": {
+    "ARITHMETIC": "arithmetisch",
+    "CLOUD": "Cloud",
+    "RESTRUCTURE": "umstrukturierend",
+    "HELPER": "Hilfs-Plugin",
+    "CARBON": "CO2",
+    "ENERGY": "Energie",
+    "CPU": "CPU"
   }
 }

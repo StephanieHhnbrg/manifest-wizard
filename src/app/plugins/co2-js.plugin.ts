@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const Co2JsPlugin: PluginData = {
     name: "CO2.JS",
     method: "Co2js",
     path: "@grnsft/if-unofficial-plugins",
     pipelineId: "co2js",
+    pCategory: [PluginCategory.CARBON],
+    ghLink: "https://github.com/Green-Software-Foundation/if-unofficial-plugins/tree/main/src/lib/co2js",
 
     manifestAttributes: {
         globalConfig: [

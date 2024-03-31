@@ -53,6 +53,7 @@ import {NgxMatTimepickerModule} from "ngx-mat-timepicker";
 import {
     PluginConfigurationByContextDialogComponent
 } from "./dialogs/plugin-configuration-by-context-dialog/plugin-configuration-by-context-dialog.component";
+import {PluginOverviewDialogComponent} from "./dialogs/plugin-overview-dialog/plugin-overview-dialog.component";
 
 @NgModule({
     imports: [
@@ -119,6 +120,7 @@ import {
         TerminalInstructionDialog,
         ChartConfigurationDialogComponent,
         PluginConfigurationByContextDialogComponent,
+        PluginOverviewDialogComponent,
     ],
     providers: [provideRouter(ROUTES), provideNativeDateAdapter()],
     bootstrap: [AppComponent]

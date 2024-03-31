@@ -56,3 +56,19 @@ body {
 }
 
 @import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+a {
+  color: var(--app-primary-default) !important;
+}
+
+.info-dialog a {
+  color: var(--app-primary-600) !important;
+}
+
+.start-screen a {
+  color: white !important;
+}
+
+a:hover {
+  text-decoration: underline;
+}

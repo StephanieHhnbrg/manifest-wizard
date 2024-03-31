@@ -1,0 +1,45 @@
+<div class="dialog">
+    <div class="header-row">
+        <h2 mat-dialog-title>{{"PLUGIN_OVERVIEW_DIALOG.TITLE" | translate}}</h2>
+        <mat-chip *ngIf="categoryFilter" [class]="getCssClassForCategoryChip(categoryFilter)">
+            {{categoryFilter | translate}} ({{dataSource.data.length}})
+            <button matChipRemove (click)="removeFilter()">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-chip>
+    </div>
+    <mat-dialog-content>
+        <div>
+            <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container [matColumnDef]="headers[0]">
+                    <th mat-header-cell *matHeaderCellDef
+                        mat-sort-header> {{getTranslateKeyForHeader(headers[0]) | translate}} </th>
+                    <td mat-cell *matCellDef="let element">
+                        <a [href]="element.ghLink" target="_blank">{{ element.name }}</a></td>
+                </ng-container>
+
+                <ng-container [matColumnDef]="headers[1]">
+                    <th mat-header-cell style="width: 175px"
+                        *matHeaderCellDef> {{getTranslateKeyForHeader(headers[1]) | translate}} </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-chip-listbox aria-label="Plugin Categories">
+                            <div *ngFor="let category of element.pCategory">
+                                <mat-chip [class]="getCssClassForCategoryChip(category)"
+                                          (click)="filterByCategory(category)">{{category | translate}}</mat-chip>
+                            </div>
+                        </mat-chip-listbox>
+                    </td>
+                </ng-container>
+
+                <ng-container [matColumnDef]="headers[2]">
+                    <th mat-header-cell *matHeaderCellDef> {{getTranslateKeyForHeader(headers[2]) | translate}} </th>
+                    <td mat-cell *matCellDef="let element"> {{getTranslateKeyForPluginDesc(element) | translate}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="headers"></tr>
+                <tr mat-row *matRowDef="let row; columns: headers;"></tr>
+            </table>
+            <p>&nbsp;</p>
+        </div>
+    </mat-dialog-content>
+</div>

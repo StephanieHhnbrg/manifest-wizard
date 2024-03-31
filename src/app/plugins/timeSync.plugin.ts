@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const TimeSyncPlugin: PluginData = {
     name: "Time Sync",
     method: "TimeSync",
     path: "builtin",
     pipelineId: "time-sync",
+    pCategory: [PluginCategory.RESTRUCTURE],
+    ghLink: "https://github.com/Green-Software-Foundation/if/tree/main/src/builtins",
 
     manifestAttributes: {
         globalConfig: [

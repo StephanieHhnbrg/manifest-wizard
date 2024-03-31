@@ -102,7 +102,7 @@
   "INFO_DIALOG": {
     "EXPLAINATION": "This tool is part of the annual <a href='https://hack.greensoftware.foundation' target='_blank'>hackathon</a> from the Green Software Foundation, which is focussing on the <a href='https://if.greensoftware.foundation' target='_blank'>Impact Framework (IF)</a>",
     "EXPLAINATION2": "This tool not only supports users to create their own manifest files, needed as input for the IF, but also offers them a visualization of their received output from the IF.",
-    "EXPLAINATION3": "The code is publicly available on "
+    "EXPLAINATION3": "The code is publicly available on"
   },
   "START_SCREEN": {
     "WELCOME": "Welcome",
@@ -126,5 +126,20 @@
     "AVG": "Average",
     "MIN": "Minimum",
     "MAX": "Maximum"
+  },
+  "PLUGIN_OVERVIEW_DIALOG": {
+    "TITLE": "Plugin Overview",
+    "PLUGIN": "Plugin",
+    "CATEGORY": "Category",
+    "DESCRIPTION": "Description"
+  },
+  "PLUGIN_CATEGORY": {
+    "ARITHMETIC": "Arithmetic",
+    "CLOUD": "Cloud",
+    "RESTRUCTURE": "Restructuring",
+    "HELPER": "Helper plugin",
+    "CARBON": "Carbon",
+    "ENERGY": "Energy",
+    "CPU": "CPU"
   }
 }

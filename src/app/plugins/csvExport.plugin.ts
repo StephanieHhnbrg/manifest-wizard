@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const CsvExportPlugin: PluginData = {
     name: "CSV Export",
     method: "CsvExport",
     path: "@grnsft/if-plugins",
     pipelineId: "csv-exporter",
+    pCategory: [PluginCategory.HELPER],
+    ghLink: "https://github.com/Green-Software-Foundation/if-plugins/tree/main/src/lib/csv-export",
 
     manifestAttributes: {
         globalConfig: [],

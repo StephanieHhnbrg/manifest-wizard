@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const AzureImporterPlugin: PluginData = {
     name: "Azure Importer",
     method: "AzureImporter",
     path: "@grnsft/if-unofficial-plugins",
     pipelineId: "azure-importer",
+    pCategory: [PluginCategory.CLOUD],
+    ghLink: "https://github.com/Green-Software-Foundation/if-unofficial-plugins/tree/main/src/lib/azure-importer",
 
     manifestAttributes: {
         globalConfig: [],

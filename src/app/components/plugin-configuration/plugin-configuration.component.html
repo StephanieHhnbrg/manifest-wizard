@@ -1,4 +1,8 @@
 <mat-chip-set aria-label="Plugin selection">
+    <button class="plugin-overview-button" mat-icon-button
+            aria-label="Show Plugin Overview" (click)="openPluginOverview()">
+        <mat-icon aria-hidden="false" fontIcon="info"></mat-icon>
+    </button>
     <div *ngFor="let p of plugins">
         <mat-chip-option *ngIf="p.isSelected" (click)="deselectPlugin(p)" selected
                          color="accent">{{p.plugin.name}}</mat-chip-option>

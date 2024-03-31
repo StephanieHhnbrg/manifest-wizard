@@ -1,0 +1,47 @@
+.dialog {
+  height: 600px;
+  width: 950px;
+}
+
+.header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.header-row mat-chip {
+  margin-top: 20px;
+  margin-right: 5px;
+}
+
+mat-chip {
+  --mdc-chip-label-text-color: white !important;
+}
+
+.chip-arithmetic {
+  background-color: var(--app-warning-default) !important;
+}
+
+.chip-carbon {
+  background-color: var(--app-primary-600) !important;
+}
+
+.chip-cloud {
+  background-color: var(--app-accent-400) !important;
+}
+
+.chip-cpu {
+  background-color: var(--app-accent-200) !important;
+}
+
+.chip-energy {
+  background-color: var(--app-primary-400) !important;
+}
+
+.chip-helper {
+  background-color: var(--app-warning-300) !important;
+}
+
+.chip-restructure {
+  background-color: var(--app-warning-200) !important;
+}

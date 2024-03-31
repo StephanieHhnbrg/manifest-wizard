@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PluginData} from "../../data/plugin.data";
 import {PLUGINS} from "../../data/plugins.data";
+import {MatDialog} from "@angular/material/dialog";
+import {PluginOverviewDialogComponent} from "../../dialogs/plugin-overview-dialog/plugin-overview-dialog.component";
 
 @Component({
     selector: 'app-plugin-configuration',
@@ -16,7 +18,7 @@ export class PluginConfigurationComponent implements OnInit {
 
     public accordionStep = 0;
 
-    constructor() {
+    constructor(private dialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -93,6 +95,12 @@ export class PluginConfigurationComponent implements OnInit {
 
     public isString($event: any): boolean {
         return typeof $event === "string";
+    }
+
+    public openPluginOverview() {
+        this.dialog.open(PluginOverviewDialogComponent, {
+            autoFocus: false
+        });
     }
 }
 

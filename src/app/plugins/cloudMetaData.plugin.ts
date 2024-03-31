@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const CloudMetaDataPlugin: PluginData = {
     name: "Cloud Metadata",
     method: "CloudMetadata",
     path: "@grnsft/if-plugins",
     pipelineId: "cloud-metadata",
+    pCategory: [PluginCategory.CLOUD, PluginCategory.CPU],
+    ghLink: "https://github.com/Green-Software-Foundation/if-plugins/tree/main/src/lib/cloud-metadata",
 
     manifestAttributes: {
         globalConfig: [],

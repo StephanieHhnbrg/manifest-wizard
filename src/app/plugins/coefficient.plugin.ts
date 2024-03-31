@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const CoefficientPlugin: PluginData = {
     name: "Coefficient",
     method: "Coefficient",
     path: "@grnsft/if-plugins",
     pipelineId: "coefficient",
+    pCategory: [PluginCategory.ARITHMETIC],
+    ghLink: "https://github.com/Green-Software-Foundation/if-plugins/tree/main/src/lib/coefficient",
 
     manifestAttributes: {
         globalConfig: [

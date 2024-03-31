@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const WattTimePlugin: PluginData = {
     name: "Watt Time",
     method: "WattTimeGridEmissions",
     path: "@grnsft/if-unofficial-plugins",
     pipelineId: "watt-time",
+    pCategory: [PluginCategory.CARBON, PluginCategory.CLOUD],
+    ghLink: "https://github.com/Green-Software-Foundation/if-unofficial-plugins/tree/main/src/lib/watt-time",
 
     manifestAttributes: {
         globalConfig: [

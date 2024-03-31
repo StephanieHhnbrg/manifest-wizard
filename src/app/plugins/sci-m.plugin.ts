@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const SciMPlugin: PluginData = {
     name: "SCI-M",
     method: "SciM",
     path: "@grnsft/if-plugins",
     pipelineId: "sci-m",
+    pCategory: [PluginCategory.CARBON],
+    ghLink: "https://github.com/Green-Software-Foundation/if-plugins/tree/main/src/lib/sci-m",
 
     manifestAttributes: {
         globalConfig: [],

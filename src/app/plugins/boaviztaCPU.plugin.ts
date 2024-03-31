@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const BoaviztaCPUPlugin: PluginData = {
     name: "Boavizta CPU",
     method: "BoaviztaCpuOutput",
     path: "@grnsft/if-unofficial-plugins",
     pipelineId: "boavizta-cpu",
+    pCategory: [PluginCategory.CARBON, PluginCategory.CPU, PluginCategory.ENERGY],
+    ghLink: "https://github.com/Green-Software-Foundation/if-unofficial-plugins/tree/main/src/lib/boavizta",
 
     manifestAttributes: {
         globalConfig: [

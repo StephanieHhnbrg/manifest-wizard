@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const TeadsAwsPlugin: PluginData = {
     name: "Teads AWS",
     method: "TeadsAWS",
     path: "@grnsft/if-unofficial-plugins",
     pipelineId: "teads-aws",
+    pCategory: [PluginCategory.CARBON, PluginCategory.CLOUD, PluginCategory.ENERGY],
+    ghLink: "https://github.com/Green-Software-Foundation/if-unofficial-plugins/tree/main/src/lib/teads-aws",
 
     manifestAttributes: {
         globalConfig: [

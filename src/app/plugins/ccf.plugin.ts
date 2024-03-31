@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const CcfPlugin: PluginData = {
     name: "CCF",
     method: "CloudCarbonFootprint",
     path: "@grnsft/if-unofficial-plugins",
     pipelineId: "ccf",
+    pCategory: [PluginCategory.CARBON, PluginCategory.CLOUD, PluginCategory.CPU],
+    ghLink: "https://github.com/Green-Software-Foundation/if-unofficial-plugins/tree/main/src/lib/ccf",
 
     manifestAttributes: {
         globalConfig: [],

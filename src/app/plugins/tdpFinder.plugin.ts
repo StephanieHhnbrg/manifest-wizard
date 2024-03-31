@@ -1,10 +1,12 @@
-import {PluginData} from "../data/plugin.data";
+import {PluginCategory, PluginData} from "../data/plugin.data";
 
 export const TdpFinderPlugin: PluginData = {
     name: "TDP Finder",
     method: "TdpFinder",
     path: "@grnsft/if-plugins",
     pipelineId: "finder",
+    pCategory: [PluginCategory.CPU],
+    ghLink: "https://github.com/Green-Software-Foundation/if-plugins/tree/main/src/lib/tdp-finder",
 
     manifestAttributes: {
         globalConfig: [],
